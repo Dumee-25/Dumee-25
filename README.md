@@ -1,7 +1,7 @@
 <!-- Banner -->
 ![header](https://capsule-render.vercel.app/api?type=waving&color=0:4f46e5,100:9333ea&height=200&text=Dumee&fontSize=60&fontAlignY=35&animation=fadeIn)
 
-# 👋 Hey, I'm **Dumee**
+# 👋 Hey, I'm **Dumindu**
 
 🎓 **Data Science Undergraduate @ NSBM**  
 📈 **Statistical Modeling & Deep Learning Enthusiast**  
@@ -29,7 +29,6 @@
 
 ### **Machine Learning / Deep Learning**
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?logo=tensorflow&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white)
 ![Sklearn](https://img.shields.io/badge/Scikit--Learn-F7931E?logo=scikitlearn&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?logo=pandas)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?logo=numpy)
@@ -41,34 +40,32 @@
 
 ---
 
-## 📊 GitHub Stats  
-<div align="center">
+## 📁 Projects  
 
-![Stats](https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight&hide_title=true&rank_icon=github)
+<!-- Animated divider -->
+![wave](https://capsule-render.vercel.app/api?type=wave&height=80&color=0:0f0c29,100:302b63&section=header)
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=tokyonight)
+### 🔬 Breast Cancer Prediction Model  
+Built a clean and efficient ML classifier for early breast cancer detection.  
+Focused on preprocessing, feature selection, model tuning, and evaluation.  
+*Group project.*
 
-</div>
+### 🧪 Research Paper (In Progress)  
+Writing a research paper combining data science + medical domain knowledge,  
+focusing on real-world predictive modelling and healthcare ML applications.
 
----
+### 🦠 Dengue Outbreak Prediction — ML-Enhanced SEIR  
+Creating a hybrid **SEIR × ML** pipeline for short-term dengue forecasting  
+and risk mapping across Sri Lanka using epidemiological + climate data.  
+*Animated data workflow coming soon.*
 
-## 🧩 AI Contributions Snake (🔥 Coolest Part)
-![snake](https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_USERNAME/output/github-contribution-grid-snake-dark.svg)
+### 🧠 Digital Clone (Upcoming)  
+Planning an AI-driven digital clone capable of simulating  
+behaviour, reasoning styles, and adaptive decision-making.  
+A future cognitive-model + deep learning experiment.
 
----
-
-## 📁 Featured Projects  
-### 🔬 **Machine Learning**
-- 🧠 *Emotion Modeling Experiment* – prototype for AI reasoning  
-- 📈 *Statistical prediction model* – regression + ML mix  
-- 🧪 *Medical diagnosis ML pipeline* (coming soon)
-
-### 💻 **Software / Tools**
-- 🌱 Spring Boot REST API templates  
-- 📊 R projects for statistical modelling  
-- 🔍 Reverse engineering scripts (private for now 👀)
-
----
+<!-- Animated divider -->
+![wave](https://capsule-render.vercel.app/api?type=wave&height=80&color=0:302b63,100:0f0c29&section=footer)
 
 ## 🌟 Philosophy  
 **“Build models that think. Create systems that learn. Stay hungry, stay evolving.”**
