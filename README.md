@@ -1,6 +1,4 @@
 <!-- Banner -->
-![header](https://capsule-render.vercel.app/api?type=waving&color=0:4f46e5,100:9333ea&height=200&text=Dumee&fontSize=60&fontAlignY=35&animation=fadeIn)
-
 # 👋 Hey, I'm **Dumindu**
 
 🎓 **Data Science Undergraduate @ NSBM**  
