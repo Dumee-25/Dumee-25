@@ -246,7 +246,7 @@ graph LR
 
 <div align="center">
 
-<a href="[https://linkedin.com/in/dumindu-kumarapeli](https://www.linkedin.com/in/dumindu-kumarapeli-7a4636309?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)">
+<a href="https://www.linkedin.com/in/dumindu-kumarapeli-7a4636309?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
 <img src="https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
 </a>
 <a href="mailto:duminduku.25@gmail.com">
