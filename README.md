@@ -188,21 +188,6 @@ SEIR_dynamics + ML_correction → Real_time_forecast
 
 ---
 
-## 📊 GitHub Analytics
-
-<div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=dumindu&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=6C63FF&icon_color=6C63FF&text_color=C9D1D9" width="48%" />
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=dumindu&theme=tokyonight&hide_border=true&background=0D1117&ring=6C63FF&fire=6C63FF&currStreakLabel=6C63FF" width="48%" />
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=dumindu&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=6C63FF&text_color=C9D1D9" width="48%" />
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=dumindu&theme=tokyo-night&hide_border=true&bg_color=0D1117&color=6C63FF&line=6C63FF&point=C9D1D9" width="98%" />
-
-</div>
-
----
-
 ## 🎯 Current Learning Path
 
 <div align="center">
@@ -280,13 +265,6 @@ graph LR
 ### 🚀 Always learning. Always building. Always evolving.
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=120&section=footer" width="100%"/>
-
-<!-- Contribution Snake Animation -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dumindu/dumindu/output/github-contribution-grid-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/dumindu/dumindu/output/github-contribution-grid-snake.svg">
-  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/dumindu/dumindu/output/github-contribution-grid-snake.svg">
-</picture>
 
 **Made with ❤️ and ☕ by Dumindu**
 
