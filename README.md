@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Animated Header -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Dumindu%20Wickramasinghe&fontSize=50&fontColor=fff&animation=fadeIn&fontAlignY=35&desc=Data%20Science%20%7C%20ML%20Engineer%20%7C%20AI%20Researcher&descAlignY=55&descSize=18" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Dumindu%20Kumarapeli&fontSize=50&fontColor=fff&animation=fadeIn&fontAlignY=35&desc=Data%20Science%20%7C%20ML%20Engineer%20%7C%20AI%20Researcher&descAlignY=55&descSize=18" width="100%"/>
 
 <!-- Animated Typing Effect -->
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=6C63FF&center=true&vCenter=true&multiline=false&width=600&height=100&lines=Statistical+Modeling+%26+Deep+Learning;Building+Predictive+AI+Systems;Exploring+Medical+AI+%26+Analytics" alt="Typing SVG" /></a>
@@ -18,7 +18,7 @@
 ```python
 class DataScientist:
     def __init__(self):
-        self.name = "Dumindu Wickramasinghe"
+        self.name = "Dumindu Kumarapeli"
         self.education = "Data Science @ NSBM Green University"
         self.interests = ["Deep Learning", "Statistical Modeling", "Medical AI"]
         self.hobbies = ["Chess ♟️", "Coding Challenges 💻", "Reverse Engineering 🔧"]
@@ -145,17 +145,6 @@ accuracy = "95%+"
 
 ---
 
-### 📄 Medical AI Research Paper
-<img src="https://img.shields.io/badge/Status-In%20Progress-orange?style=for-the-badge&logo=googlescholar&logoColor=white" /> <img src="https://img.shields.io/badge/Type-Research-red?style=for-the-badge&logo=academia&logoColor=white" />
-
-**Combining data science with medical domain expertise**
-- 🏥 Healthcare ML applications
-- 📈 Real-world predictive modeling
-- 🔍 Evidence-based methodology
-- 📚 Peer-review submission planned
-
----
-
 ### 🦠 Dengue Outbreak Prediction — Hybrid SEIR × ML
 <img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=for-the-badge&logo=databricks&logoColor=white" /> <img src="https://img.shields.io/badge/Type-Time%20Series-blueviolet?style=for-the-badge&logo=tensorflow&logoColor=white" />
 
@@ -189,7 +178,7 @@ SEIR_dynamics + ML_correction → Real_time_forecast
 - 🎭 Personality & reasoning style replication
 - 🔬 Deep learning + cognitive science fusion
 
-**Status:** *Research & architecture design phase*
+**Status:** *Pending*
 
 <div align="center">
 
@@ -272,16 +261,13 @@ graph LR
 
 <div align="center">
 
-<a href="https://linkedin.com/in/yourprofile">
+<a href="https://linkedin.com/in/dumindu-kumarapeli">
 <img src="https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
 </a>
-<a href="https://twitter.com/yourhandle">
-<img src="https://img.shields.io/badge/Twitter-Follow-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
-</a>
-<a href="mailto:your.email@example.com">
+<a href="mailto:duminduku.25@gmail.com">
 <img src="https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
 </a>
-<a href="https://yourportfolio.com">
+<a href="#">
 <img src="https://img.shields.io/badge/Portfolio-Visit-6C63FF?style=for-the-badge&logo=google-chrome&logoColor=white" />
 </a>
 
