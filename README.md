@@ -19,18 +19,19 @@
 class DataScientist:
     def __init__(self):
         self.name = "Dumindu Kumarapeli"
-        self.education = "Data Science @ NSBM Green University"
+        self.education = "BSc (Hons) Data Science @ NSBM Green University"
+        self.role     = "Assistant Secretary @ NSBM AI Association (NAIA)"
         self.interests = ["Deep Learning", "Statistical Modeling", "Medical AI"]
         self.hobbies = ["Chess ♟️", "Coding Challenges 💻", "Reverse Engineering 🔧"]
-        
+
     def current_focus(self):
         return [
-            "🧠 Deep Learning Architectures",
-            "📊 Probabilistic & Statistical Modeling",
-            "🏥 Healthcare AI Applications",
-            "🔮 Predictive Analytics"
+            "🧠 LLMs, RNNs & PyTorch",
+            "⚡ CUDA Acceleration",
+            "🌐 Full-Stack AI Applications (React + Node.js)",
+            "🔮 Predictive & Probabilistic Modeling"
         ]
-    
+
     def philosophy(self):
         return "Build models that think. Create systems that learn. 🚀"
 ```
@@ -64,8 +65,8 @@ class DataScientist:
 <br>Java
 </td>
 <td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=postgres" width="48" height="48" alt="SQL" />
-<br>SQL
+<img src="https://skillicons.dev/icons?i=javascript" width="48" height="48" alt="JavaScript" />
+<br>JavaScript
 </td>
 </tr>
 </table>
@@ -77,6 +78,10 @@ class DataScientist:
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=tensorflow" width="48" height="48" alt="TensorFlow" />
 <br>TensorFlow
+</td>
+<td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=pytorch" width="48" height="48" alt="PyTorch" />
+<br>PyTorch
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=sklearn" width="48" height="48" alt="Scikit-learn" />
@@ -98,20 +103,47 @@ class DataScientist:
 <table>
 <tr>
 <td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=fastapi" width="48" height="48" alt="FastAPI" />
+<br>FastAPI
+</td>
+<td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=spring" width="48" height="48" alt="Spring Boot" />
 <br>Spring Boot
+</td>
+<td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=react" width="48" height="48" alt="React" />
+<br>React
+</td>
+<td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=nodejs" width="48" height="48" alt="Node.js" />
+<br>Node.js
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=git" width="48" height="48" alt="Git" />
 <br>Git
 </td>
+</tr>
+</table>
+
+### **Visualization & BI**
+
+<table>
+<tr>
 <td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=vscode" width="48" height="48" alt="VS Code" />
-<br>VS Code
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" width="48" height="48" alt="Matplotlib" />
+<br>Matplotlib
 </td>
 <td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=docker" width="48" height="48" alt="Docker" />
-<br>Docker
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/plotly/plotly-original.svg" width="48" height="48" alt="Plotly" />
+<br>Plotly
+</td>
+<td align="center" width="96">
+<img src="https://img.icons8.com/color/96/power-bi.png" width="48" height="48" alt="Power BI" />
+<br>Power BI
+</td>
+<td align="center" width="96">
+<img src="https://streamlit.io/images/brand/streamlit-mark-color.svg" width="48" height="48" alt="Streamlit" />
+<br>Streamlit
 </td>
 </tr>
 </table>
@@ -123,67 +155,62 @@ class DataScientist:
 ## 🚀 Featured Projects
 
 <div align="center">
-
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&section=header" width="100%"/>
-
 </div>
 
-### 🔬 Breast Cancer Prediction Model
-<img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge&logo=checkmarx&logoColor=white" /> <img src="https://img.shields.io/badge/Type-Classification-blue?style=for-the-badge&logo=python&logoColor=white" />
+### 🧠 DataSense — AI-Powered Data Analysis Platform
+<img src="https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge&logo=databricks&logoColor=white" /> <img src="https://img.shields.io/badge/Type-AI%20Application-6C63FF?style=for-the-badge&logo=openai&logoColor=white" />
 
-**Built a high-accuracy ML classifier for early breast cancer detection**
-- ✨ Advanced preprocessing & feature engineering
-- 🎯 Hyperparameter optimization & model tuning
-- 📊 Comprehensive evaluation metrics & visualization
-- 👥 **Collaborative group project**
+**An intelligent platform that automates data analysis workflows and delivers actionable insights**
+
+- 🤖 AI-driven insight generation from raw datasets
+- 📊 Interactive visualizations and automated reporting
+- ⚡ Built with FastAPI backend + Streamlit frontend
+- 🔗 Modular pipeline architecture for scalability
 
 ```python
-# Key Technologies
-tech_stack = ["Scikit-learn", "Pandas", "Matplotlib", "Seaborn"]
-accuracy = "95%+"
+tech_stack = ["Python", "FastAPI", "Streamlit", "Pandas", "Plotly", "LLMs"]
+focus      = "Making data analysis accessible to non-technical users"
 ```
 
 ---
 
-### 🦠 Dengue Outbreak Prediction — Hybrid SEIR × ML
-<img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=for-the-badge&logo=databricks&logoColor=white" /> <img src="https://img.shields.io/badge/Type-Time%20Series-blueviolet?style=for-the-badge&logo=tensorflow&logoColor=white" />
+### 🌌 Celestial Object Classifier
+<img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge&logo=checkmarx&logoColor=white" /> <img src="https://img.shields.io/badge/Accuracy-99.19%25-gold?style=for-the-badge&logo=tensorflow&logoColor=white" /> <img src="https://img.shields.io/badge/Type-Deep%20Learning-blueviolet?style=for-the-badge&logo=tensorflow&logoColor=white" />
 
-**Next-gen epidemiological forecasting for Sri Lanka**
+**A RandomForest-based classifier for identifying celestial objects from astronomical datasets**
 
-🎯 **Objectives:**
-- 🧬 Hybrid **SEIR compartmental model** + **Machine Learning**
-- 🌡️ Climate & environmental data integration
-- 🗺️ Geographic risk mapping & hotspot detection
-- ⚡ Short-term outbreak prediction pipeline
+- 🔭 Classifies stars, galaxies, and quasars with **99.19% accuracy**
+- 🧪 Advanced feature extraction using Convolutional Neural Networks
+- 📈 Extensive evaluation: confusion matrices, ROC curves, precision-recall analysis
+- 🛰️ Trained on spectroscopic survey data
 
-```r
-# Model Architecture
-SEIR_dynamics + ML_correction → Real_time_forecast
-         ↓
-[Climate Data] + [Epidemiological Records] → Risk Score
+```python
+tech_stack = [ "Scikit-learn", "Matplotlib", "Seaborn", "NumPy"]
+accuracy   = "99.19%"
+task       = "Multi-class Astronomical Object Classification"
 ```
-
-**Impact:** Early warning system for public health interventions
 
 ---
 
-### 🧠 Digital Clone — Cognitive AI Simulation
-<img src="https://img.shields.io/badge/Status-Planned-lightgrey?style=for-the-badge&logo=openai&logoColor=white" /> <img src="https://img.shields.io/badge/Type-Experimental-9cf?style=for-the-badge&logo=artificial-intelligence&logoColor=white" />
+### ⚡ Superconductivity Critical Temperature Prediction
+<img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge&logo=checkmarx&logoColor=white" /> <img src="https://img.shields.io/badge/Type-Regression%20%7C%20ML-orange?style=for-the-badge&logo=python&logoColor=white" />
 
-**AI-driven behavioral & cognitive modeling system**
+**Predicting the superconducting critical temperature (Tc) of materials using ML regression**
 
-🔮 **Vision:**
-- 🤖 Behavioral pattern simulation
-- 🧩 Adaptive decision-making engine
-- 🎭 Personality & reasoning style replication
-- 🔬 Deep learning + cognitive science fusion
+- 🧲 Regression modeling on superconductor material properties
+- 🔬 Feature engineering from chemical composition descriptors
+- 📊 Benchmarked across multiple algorithms (RF, XGBoost, SVR, and more)
+- 🎯 Hyperparameter tuning for optimal predictive performance
 
-**Status:** *Pending*
+```python
+tech_stack = ["Python", "Scikit-learn", "Pandas", "NumPy", "Matplotlib", "SciPy"]
+task       = "Critical Temperature (Tc) Regression"
+dataset    = "UCI Superconductivity Dataset"
+```
 
 <div align="center">
-
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=20,11,6&height=2&section=footer" width="100%"/>
-
 </div>
 
 ---
@@ -194,13 +221,13 @@ SEIR_dynamics + ML_correction → Real_time_forecast
 
 ```mermaid
 graph LR
-    A[Deep Learning] --> B[Neural Architectures]
-    A --> C[Computer Vision]
-    D[Statistical Modeling] --> E[Bayesian Methods]
-    D --> F[Time Series]
-    G[Medical AI] --> H[Disease Prediction]
-    G --> I[Healthcare Analytics]
-    
+    A[Deep Learning] --> B[RNNs & LSTMs]
+    A --> C[LLMs & Transformers]
+    D[High Performance Computing] --> E[CUDA Acceleration]
+    D --> F[PyTorch Internals]
+    G[Full-Stack AI] --> H[React + Node.js]
+    G --> I[AI-Powered Web Apps]
+
     style A fill:#6C63FF
     style D fill:#6C63FF
     style G fill:#6C63FF
@@ -246,7 +273,7 @@ graph LR
 
 <div align="center">
 
-<a href="https://www.linkedin.com/in/dumindu-kumarapeli-7a4636309?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+<a href="https://www.linkedin.com/in/dumindu-kumarapeli-7a4636309">
 <img src="https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
 </a>
 <a href="mailto:duminduku.25@gmail.com">
