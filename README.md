@@ -176,7 +176,7 @@ focus      = "Making data analysis accessible to non-technical users"
 ---
 
 ### 🌌 Celestial Object Classifier
-<img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge&logo=checkmarx&logoColor=white" /> <img src="https://img.shields.io/badge/Accuracy-99.19%25-gold?style=for-the-badge&logo=tensorflow&logoColor=white" /> <img src="https://img.shields.io/badge/Type-Deep%20Learning-blueviolet?style=for-the-badge&logo=tensorflow&logoColor=white" />
+<img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge&logo=checkmarx&logoColor=white" /> <img src="https://img.shields.io/badge/Accuracy-99.19%25-gold?style=for-the-badge&logo=tensorflow&logoColor=white" />
 
 **A RandomForest-based classifier for identifying celestial objects from astronomical datasets**
 
