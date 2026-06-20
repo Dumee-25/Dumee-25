@@ -1,298 +1,143 @@
-<div align="center">
+<!--
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │  BEFORE YOU COMMIT — replace every `your-username` below with your    │
+  │  actual GitHub handle, and swap the placeholder repo/demo links in    │
+  │  each project block. Search for: your-username   and   REPLACE_       │
+  └─────────────────────────────────────────────────────────────────────┘
+-->
 
-<!-- Animated Header -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Dumindu%20Kumarapeli&fontSize=50&fontColor=fff&animation=fadeIn&fontAlignY=35&desc=Data%20Science%20%7C%20ML%20Engineer%20%7C%20AI%20Researcher&descAlignY=55&descSize=18" width="100%"/>
+<h1 align="center">Dumindu Kumarapeli</h1>
 
-<!-- Animated Typing Effect -->
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=6C63FF&center=true&vCenter=true&multiline=false&width=600&height=100&lines=Statistical+Modeling+%26+Deep+Learning;Building+Predictive+AI+Systems;Exploring+Medical+AI+%26+Analytics" alt="Typing SVG" /></a>
+<p align="center">
+  <b>Data Science undergraduate</b> — applied ML, anomaly detection, and LLM / RAG systems.<br/>
+  I build research prototypes that ship: full pipelines from data generation through deployment.
+</p>
 
-<!-- Profile Views Counter -->
-<img src="https://komarev.com/ghpvc/?username=dumindu&label=Profile%20Views&color=6c63ff&style=for-the-badge" alt="profile views" />
-
-</div>
-
----
-
-## 🎯 About Me
-
-```python
-class DataScientist:
-    def __init__(self):
-        self.name = "Dumindu Kumarapeli"
-        self.education = "BSc (Hons) Data Science @ NSBM Green University"
-        self.role     = "Assistant Secretary @ NSBM AI Association (NAIA)"
-        self.interests = ["Deep Learning", "Statistical Modeling", "Medical AI"]
-        self.hobbies = ["Chess ♟️", "Coding Challenges 💻", "Reverse Engineering 🔧"]
-
-    def current_focus(self):
-        return [
-            "🧠 LLMs, RNNs & PyTorch",
-            "⚡ CUDA Acceleration",
-            "🌐 Full-Stack AI Applications (React + Node.js)",
-            "🔮 Predictive & Probabilistic Modeling"
-        ]
-
-    def philosophy(self):
-        return "Build models that think. Create systems that learn. 🚀"
-```
-
-<div align="center">
-
-### 🎓 Student | 📈 Researcher | 🤖 Builder
-
-</div>
+<p align="center">
+  <a href="https://www.linkedin.com/in/dumindu-kumarapeli-7a4636309">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="mailto:duminduku.25@gmail.com">
+    <img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Email"/>
+  </a>
+  <img src="https://img.shields.io/badge/Open%20to-Research%20collab%20%26%20ML%2FAI%20roles-2EA043?style=flat-square" alt="Open to"/>
+</p>
 
 ---
 
-## 🛠️ Tech Arsenal
+### About
 
-<div align="center">
+BSc (Hons) Data Science @ **NSBM Green University**, Sri Lanka · Assistant Secretary, **NSBM AI Association (NAIA)**.
 
-### **Programming Languages**
+I work across the full ML lifecycle — synthetic data generation, time-series anomaly detection, retrieval-augmented LLM systems, and the backend/frontend needed to deploy them. I care about systems that are reproducible, honest about their limits, and actually runnable.
 
-<table>
-<tr>
-<td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=python" width="48" height="48" alt="Python" />
-<br>Python
-</td>
-<td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=r" width="48" height="48" alt="R" />
-<br>R
-</td>
-<td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=java" width="48" height="48" alt="Java" />
-<br>Java
-</td>
-<td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=javascript" width="48" height="48" alt="JavaScript" />
-<br>JavaScript
-</td>
-</tr>
-</table>
-
-### **Machine Learning & Data Science**
-
-<table>
-<tr>
-<td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=tensorflow" width="48" height="48" alt="TensorFlow" />
-<br>TensorFlow
-</td>
-<td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=pytorch" width="48" height="48" alt="PyTorch" />
-<br>PyTorch
-</td>
-<td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=sklearn" width="48" height="48" alt="Scikit-learn" />
-<br>Sklearn
-</td>
-<td align="center" width="96">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg" width="48" height="48" alt="Pandas" />
-<br>Pandas
-</td>
-<td align="center" width="96">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg" width="48" height="48" alt="NumPy" />
-<br>NumPy
-</td>
-</tr>
-</table>
-
-### **Frameworks & Tools**
-
-<table>
-<tr>
-<td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=fastapi" width="48" height="48" alt="FastAPI" />
-<br>FastAPI
-</td>
-<td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=spring" width="48" height="48" alt="Spring Boot" />
-<br>Spring Boot
-</td>
-<td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=react" width="48" height="48" alt="React" />
-<br>React
-</td>
-<td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=nodejs" width="48" height="48" alt="Node.js" />
-<br>Node.js
-</td>
-<td align="center" width="96">
-<img src="https://skillicons.dev/icons?i=git" width="48" height="48" alt="Git" />
-<br>Git
-</td>
-</tr>
-</table>
-
-### **Visualization & BI**
-
-<table>
-<tr>
-<td align="center" width="96">
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" width="48" height="48" alt="Matplotlib" />
-<br>Matplotlib
-</td>
-<td align="center" width="96">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/plotly/plotly-original.svg" width="48" height="48" alt="Plotly" />
-<br>Plotly
-</td>
-<td align="center" width="96">
-<img src="https://img.icons8.com/color/96/power-bi.png" width="48" height="48" alt="Power BI" />
-<br>Power BI
-</td>
-<td align="center" width="96">
-<img src="https://streamlit.io/images/brand/streamlit-mark-color.svg" width="48" height="48" alt="Streamlit" />
-<br>Streamlit
-</td>
-</tr>
-</table>
-
-</div>
+**Currently exploring:** CUDA acceleration · sequence models (RNN/LSTM) · production LLM/RAG pipelines.
 
 ---
 
-## 🚀 Featured Projects
+### Tech
 
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&section=header" width="100%"/>
-</div>
+**Languages**
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=openjdk&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![R](https://img.shields.io/badge/R-276DC3?style=flat-square&logo=r&logoColor=white)
 
-### 🧠 DataSense — AI-Powered Data Analysis Platform
-<img src="https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge&logo=databricks&logoColor=white" /> <img src="https://img.shields.io/badge/Type-AI%20Application-6C63FF?style=for-the-badge&logo=openai&logoColor=white" />
+**ML / Data Science**
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
+![Polars](https://img.shields.io/badge/Polars-CD792C?style=flat-square&logo=polars&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white)
+![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?style=flat-square&logo=scipy&logoColor=white)
+![YOLOv8](https://img.shields.io/badge/YOLOv8-00FFFF?style=flat-square&logo=yolo&logoColor=black)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
 
-**An intelligent platform that automates data analysis workflows and delivers actionable insights**
+**LLM / RAG**
+![Gemini](https://img.shields.io/badge/Gemini-4285F4?style=flat-square&logo=google&logoColor=white)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6F00?style=flat-square)
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=flat-square&logo=ollama&logoColor=white)
+![MCP](https://img.shields.io/badge/MCP-Model%20Context%20Protocol-555555?style=flat-square)
 
-- 🤖 AI-driven insight generation from raw datasets
-- 📊 Interactive visualizations and automated reporting
-- ⚡ Built with FastAPI backend + Streamlit frontend
-- 🔗 Modular pipeline architecture for scalability
+**Backend / Infra**
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 
-```python
-tech_stack = ["Python", "FastAPI", "Streamlit", "Pandas", "Plotly", "LLMs"]
-focus      = "Making data analysis accessible to non-technical users"
-```
-
----
-
-### 🌌 Celestial Object Classifier
-<img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge&logo=checkmarx&logoColor=white" /> <img src="https://img.shields.io/badge/Accuracy-99.19%25-gold?style=for-the-badge&logo=tensorflow&logoColor=white" />
-
-**A RandomForest-based classifier for identifying celestial objects from astronomical datasets**
-
-- 🔭 Classifies stars, galaxies, and quasars with **99.19% accuracy**
-- 🧪 Advanced feature extraction using Convolutional Neural Networks
-- 📈 Extensive evaluation: confusion matrices, ROC curves, precision-recall analysis
-- 🛰️ Trained on spectroscopic survey data
-
-```python
-tech_stack = [ "Scikit-learn", "Matplotlib", "Seaborn", "NumPy"]
-accuracy   = "99.19%"
-task       = "Multi-class Astronomical Object Classification"
-```
-
----
-
-### ⚡ Superconductivity Critical Temperature Prediction
-<img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge&logo=checkmarx&logoColor=white" /> <img src="https://img.shields.io/badge/Type-Regression%20%7C%20ML-orange?style=for-the-badge&logo=python&logoColor=white" />
-
-**Predicting the superconducting critical temperature (Tc) of materials using ML regression**
-
-- 🧲 Regression modeling on superconductor material properties
-- 🔬 Feature engineering from chemical composition descriptors
-- 📊 Benchmarked across multiple algorithms (RF, XGBoost, SVR, and more)
-- 🎯 Hyperparameter tuning for optimal predictive performance
-
-```python
-tech_stack = ["Python", "Scikit-learn", "Pandas", "NumPy", "Matplotlib", "SciPy"]
-task       = "Critical Temperature (Tc) Regression"
-dataset    = "UCI Superconductivity Dataset"
-```
-
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=20,11,6&height=2&section=footer" width="100%"/>
-</div>
+**Frontend / Viz**
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
+![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat-square&logo=powerbi&logoColor=black)
 
 ---
 
-## 🎯 Current Learning Path
+### Featured Projects
 
-<div align="center">
+#### 🦉 OWL — Tier III Datacenter AI Operations Platform
+> **Real-time anomaly detection + RAG-powered operations assistant for datacenter infrastructure.**
 
-```mermaid
-graph LR
-    A[Deep Learning] --> B[RNNs & LSTMs]
-    A --> C[LLMs & Transformers]
-    D[High Performance Computing] --> E[CUDA Acceleration]
-    D --> F[PyTorch Internals]
-    G[Full-Stack AI] --> H[React + Node.js]
-    G --> I[AI-Powered Web Apps]
+End-to-end platform that streams synthetic datacenter telemetry, flags anomalies with a two-model ensemble, generates LLM root-cause analysis, and serves it through a live operations console.
 
-    style A fill:#6C63FF
-    style D fill:#6C63FF
-    style G fill:#6C63FF
-```
+- **Detection** — ensemble of **Isolation Forest** (point anomalies) and an **LSTM Autoencoder** (sequence anomalies), fused 40/60 with a state-machine alert manager (onset → active → resolved).
+- **RAG assistant** — hybrid retrieval (vector + keyword) over ChromaDB with recency/LLM re-ranking, served by Gemini; exposed as REST, WebSocket, and an **MCP server** (9 tools).
+- **Data** — custom simulator (DCSIM) producing **~4.7M rows over 18 months**, 44 columns, **18 anomaly types / 106 labeled events**, with a temporal holdout split.
+- **Engineering** — async FastAPI backend, React 19 console with live dashboards, ReportLab PDF incident reports, and per-call **latency/cost metrics**.
+- **Honest scope** — trained on synthetic data only; human-in-the-loop by design (no infrastructure actuation), with a dedicated ethics document.
 
-</div>
+`PyTorch` · `scikit-learn` · `FastAPI` · `ChromaDB` · `Gemini` · `React 19` · `MCP`
+
+🔗 [Repository](https://github.com/Dumee-25/OWL-Datacenter_agent.git) &nbsp;·&nbsp; ▶ [Demo / walkthrough](REPLACE_OWL_DEMO)
 
 ---
 
-## 💡 Philosophy & Vision
+#### 📊 DataSense — AI-Powered Data Analysis Platform
+> **Upload a CSV, get a statistical audit, model recommendation, and plain-language insights in seconds.**
 
-<div align="center">
+A 7-step async pipeline that profiles a dataset, runs the statistics, recommends an ML approach, and explains the findings — provider-agnostic and privacy-aware.
 
-> ### *"Build models that think. Create systems that learn. Stay hungry, stay evolving."*
+- **Analysis** — structural profiling, quality checks, correlation/outlier/skew detection, subgroup-reversal (Simpson's paradox) flags, PCA and clustering, plus automatic target detection and a confidence-scored **model recommender**.
+- **LLM layer** — pluggable across **Ollama (local) / OpenAI / Groq**; sends only computed facts (never raw data) to the model, with response caching and a rule-based fallback when no LLM is available.
+- **Output** — 14 auto-generated charts (rendered only when relevant) and a formatted **PDF report**.
+- **Production touches** — per-IP sliding-window rate limiting, upload validation (binary + formula-injection checks), concurrency control, and structured rotating logs.
 
-<br>
+`FastAPI` · `Next.js 14` · `PostgreSQL` · `Polars` · `SciPy` · `scikit-learn`
 
-<table>
-<tr>
-<td align="center">
-<img src="https://img.icons8.com/color/96/000000/brain--v1.png" width="60" />
-<br><b>Think Deep</b>
-<br><sub>Question assumptions</sub>
-</td>
-<td align="center">
-<img src="https://img.icons8.com/color/96/000000/artificial-intelligence.png" width="60" />
-<br><b>Build Smart</b>
-<br><sub>Engineer solutions</sub>
-</td>
-<td align="center">
-<img src="https://img.icons8.com/color/96/000000/infinity-large.png" width="60" />
-<br><b>Learn Always</b>
-<br><sub>Never stop growing</sub>
-</td>
-</tr>
-</table>
-
-</div>
+🔗 [Repository](https://github.com/Dumee-25/DataSense.git) &nbsp;·&nbsp; ▶ [Live demo](REPLACE_DATASENSE_DEMO)
 
 ---
 
-## 🤝 Let's Connect
+#### 👁️ Live People Counter — YOLOv8 + Streamlit
+> **Real-time webcam people detection and counting dashboard.**
 
-<div align="center">
+A lightweight computer-vision demo: live bounding-box overlays, current/peak/total counters, a rolling history sparkline, and an event log.
 
-<a href="https://www.linkedin.com/in/dumindu-kumarapeli-7a4636309">
-<img src="https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
-</a>
-<a href="mailto:duminduku.25@gmail.com">
-<img src="https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
-</a>
-<a href="#">
-<img src="https://img.shields.io/badge/Portfolio-Visit-6C63FF?style=for-the-badge&logo=google-chrome&logoColor=white" />
-</a>
+- Selectable **YOLOv8** model size (nano → medium) and adjustable confidence threshold.
+- Person-class-only detection (COCO class 0); automatic CUDA/MPS acceleration when available.
 
-</div>
+`YOLOv8` · `OpenCV` · `Streamlit`
+
+🔗 [Repository](https://github.com/Dumee-25/Live_people_counter.git) &nbsp;·&nbsp; ▶ [Demo](REPLACE_PEOPLE_COUNTER_DEMO)
 
 ---
 
-<div align="center">
+### GitHub Activity
 
-### 🚀 Always learning. Always building. Always evolving.
+<p align="center">
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username=Dumee-25&show_icons=true&hide_border=true&count_private=true" alt="GitHub stats"/>
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Dumee-25&layout=compact&hide_border=true&langs_count=8" alt="Top languages"/>
+</p>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=120&section=footer" width="100%"/>
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Dumee-25&hide_border=true" alt="Streak"/>
+</p>
 
-**Made with ❤️ and ☕ by Dumindu**
+---
 
-</div>
+<p align="center"><sub>Reproducible pipelines, honest limitations, runnable systems.</sub></p>
