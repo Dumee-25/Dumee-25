@@ -75,7 +75,7 @@ I work across the full ML lifecycle — retrieval-augmented and agentic LLM syst
 
 ### Featured Projects
 
-#### 🦉 OWL — Datacenter AI Operations Platform
+#### OWL — Datacenter AI Operations Platform
 > **An agentic, RAG-powered operations assistant for datacenter infrastructure — with real-time monitoring built in.**
 
 End-to-end platform that streams datacenter telemetry, answers operator questions through a hybrid-RAG assistant, generates LLM root-cause analysis, and surfaces it all in a live operations console.
@@ -88,11 +88,11 @@ End-to-end platform that streams datacenter telemetry, answers operator question
 
 `Gemini` · `ChromaDB` · `MCP` · `PyTorch` · `scikit-learn` · `FastAPI` · `React 19`
 
-🔗 [Repository](https://github.com/Dumee-25/OWL-Datacenter_agent)
+[Repository](https://github.com/Dumee-25/OWL-Datacenter_agent)
 
 ---
 
-#### 📊 DataSense — Privacy-Preserving Automated EDA
+#### DataSense — Privacy-Preserving Automated EDA
 > **Upload a CSV, get a full statistical audit, model recommendation, and plain-language insights — without sending your raw data to any LLM.**
 
 A 7-step async pipeline that profiles a dataset, runs the statistics, recommends an ML approach, and explains the findings using **deterministic summarization + local LLMs**, so only computed facts (never raw rows) ever reach the model.
@@ -102,15 +102,15 @@ A 7-step async pipeline that profiles a dataset, runs the statistics, recommends
 - **Output** — 14 auto-generated charts (shown only when relevant) and a formatted **PDF report**.
 - **Production touches** — per-IP rate limiting, upload validation (binary + formula-injection checks), concurrency control, structured rotating logs.
 
-📄 *Paper:* "Privacy-preserving automated exploratory data analysis using deterministic summarization and local large language models" — **published at NSRSIT 2026** (pp. 146–150), where it won **Best Overall Research**.
+*Paper:* "Privacy-preserving automated exploratory data analysis using deterministic summarization and local large language models" — **published at NSRSIT 2026** (pp. 146–150), where it won **Best Overall Research**.
 
 `FastAPI` · `Next.js 14` · `PostgreSQL` · `Polars` · `SciPy` · `scikit-learn` · `Ollama`
 
-🔗 [Repository](https://github.com/Dumee-25/DataSense)
+[Repository](https://github.com/Dumee-25/DataSense)
 
 ---
 
-#### 📚 Seshat — Local-First Research Memory
+#### Seshat — Local-First Research Memory
 > **Passively watches a researcher's notebooks, scripts, outputs, and papers, then reconstructs what was tried and why — answerable from a chat interface, fully on-device.**
 
 A four-layer pipeline over append-only event storage that turns a researcher's own working files into a memory they can simply ask about — without any of it leaving the machine.
@@ -123,7 +123,7 @@ A four-layer pipeline over append-only event storage that turns a researcher's o
 
 `Python` · `Ollama` · `ChromaDB` · `SQLite` · `Streamlit` · `bge-small-en-v1.5`
 
-🔗 [Repository](https://github.com/Dumee-25/Seshat)
+[Repository](https://github.com/Dumee-25/Seshat)
 
 ---
 
@@ -152,11 +152,6 @@ Published, in progress, and under review — spanning privacy-preserving ML, epi
 ---
 
 ### GitHub Activity
-
-<p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=Dumee-25&show_icons=true&hide_border=true&count_private=true" alt="GitHub stats"/>
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Dumee-25&layout=compact&hide_border=true&langs_count=8" alt="Top languages"/>
-</p>
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Dumee-25&hide_border=true" alt="Streak"/>
