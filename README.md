@@ -13,6 +13,8 @@
     <img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Email"/>
   </a>
   <img src="https://img.shields.io/badge/Open%20to-Research%20collab%20%26%20ML%2FAI%20roles-2EA043?style=flat-square" alt="Open to"/>
+  <br/>
+  <img src="https://img.shields.io/badge/Best%20Overall%20Research-NSRSIT%202026-F2C811?style=flat-square" alt="Best Overall Research — NSRSIT 2026"/>
 </p>
 
 ---
@@ -57,6 +59,7 @@ I work across the full ML lifecycle — retrieval-augmented and agentic LLM syst
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 
@@ -99,7 +102,7 @@ A 7-step async pipeline that profiles a dataset, runs the statistics, recommends
 - **Output** — 14 auto-generated charts (shown only when relevant) and a formatted **PDF report**.
 - **Production touches** — per-IP rate limiting, upload validation (binary + formula-injection checks), concurrency control, structured rotating logs.
 
-📄 *Paper:* "Privacy-preserving automated exploratory data analysis using deterministic summarization and local large language models" — **accepted for oral presentation (to appear)**.
+📄 *Paper:* "Privacy-preserving automated exploratory data analysis using deterministic summarization and local large language models" — **published at NSRSIT 2026** (pp. 146–150), where it won **Best Overall Research**.
 
 `FastAPI` · `Next.js 14` · `PostgreSQL` · `Polars` · `SciPy` · `scikit-learn` · `Ollama`
 
@@ -107,9 +110,33 @@ A 7-step async pipeline that profiles a dataset, runs the statistics, recommends
 
 ---
 
+#### 📚 Seshat — Local-First Research Memory
+> **Passively watches a researcher's notebooks, scripts, outputs, and papers, then reconstructs what was tried and why — answerable from a chat interface, fully on-device.**
+
+A four-layer pipeline over append-only event storage that turns a researcher's own working files into a memory they can simply ask about — without any of it leaving the machine.
+
+- **Capture** — a filesystem watcher that diffs notebooks at the cell level, tracks script changes, and indexes experiment outputs. Zero required input; capture is passive.
+- **Journaling** — a local LLM (Ollama, default **qwen3:8b**) writes structured session summaries with an inferred intent, each marked with a **confidence score**.
+- **Paper linkage** — PDFs are embedded (**bge-small-en-v1.5**, on CPU) and connected to the sessions they relate to.
+- **Query** — hybrid vector + structured search over **ChromaDB** and **SQLite**, with citations back to the underlying diffs, surfaced through a Streamlit chat interface.
+- **Local-first by design** — watching, embedding, journaling, and answering all run on-device by default; nothing is sent anywhere.
+
+`Python` · `Ollama` · `ChromaDB` · `SQLite` · `Streamlit` · `bge-small-en-v1.5`
+
+🔗 [Repository](https://github.com/Dumee-25/Seshat)
+
+---
+
+**Also building:** [**Unspiral**](https://github.com/Dumee-25/Unspiral) — an "overthinking simulator" that takes a social scenario and expands it into a branching graph of possible futures, then resolves that graph to show the space of outcomes is smaller and more manageable than it feels. *Early WIP.*
+
+---
+
 ### Research
 
-Work in progress and under review — spanning epidemiological forecasting, medical AI, and reinforcement learning.
+Published, in progress, and under review — spanning privacy-preserving ML, epidemiological forecasting, medical AI, and reinforcement learning.
+
+- **Privacy-preserving automated exploratory data analysis using deterministic summarization and local large language models**
+  ![Published](https://img.shields.io/badge/-Published-2EA043?style=flat-square) ![Best Overall Research](https://img.shields.io/badge/-Best%20Overall%20Research-F2C811?style=flat-square) — NSRSIT 2026 (pp. 146–150). My first published paper; implemented as [DataSense](https://github.com/Dumee-25/DataSense).
 
 - **Comprehensive Design and Implementation Framework for Short-Term Prediction and Risk Mapping of Dengue Outbreaks in Sri Lanka: A Machine Learning–Enhanced SEIR Pipeline**
   ![Ongoing](https://img.shields.io/badge/-Ongoing-1F6FEB?style=flat-square) — a hybrid SEIR + ML pipeline for short-term dengue outbreak forecasting and spatial risk mapping.
