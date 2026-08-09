@@ -21,7 +21,7 @@
 
 ### About
 
-BSc (Hons) Data Science @ **NSBM Green University**, Sri Lanka · Assistant Secretary, **NSBM AI Association (NAIA)**.
+BSc (Hons) Data Science @ **NSBM Green University**, Sri Lanka
 
 I work across the full ML lifecycle — retrieval-augmented and agentic LLM systems, applied modeling and statistics, and computer vision — and the backend/frontend needed to deploy them. My research interests span **medical AI, epidemiological forecasting, and reinforcement learning**. I care about systems that are reproducible, honest about their limits, and actually runnable.
 
