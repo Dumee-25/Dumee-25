@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="154" height="56" viewBox="0 0 154 56" role="img"><title>Portfolio</title><style>.d1,.d2,.d3,.halo,.ring,.star{transform-box:fill-box;transform-origin:center}
+.d1{animation:d1 27s ease-in-out infinite alternate}
+.d2{animation:d2 31s ease-in-out infinite alternate}
+.d3{animation:d3 24s ease-in-out infinite alternate}
+@keyframes d1{to{transform:translate(90px,36px) scale(1.18)}}
+@keyframes d2{to{transform:translate(-120px,28px) scale(.9)}}
+@keyframes d3{to{transform:translate(70px,-48px) scale(1.14)}}
+.halo{animation:halo 2s ease-out infinite}
+@keyframes halo{from{transform:scale(1);opacity:.6}to{transform:scale(2.8);opacity:0}}
+.bob{animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-7px)}}
+.spin{animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bounce{animation:bounce 1.3s ease-in-out infinite}
+@keyframes bounce{50%{transform:translateY(-13px)}}
+.ring{animation:ring 2.4s ease-out infinite}
+@keyframes ring{from{transform:scale(.2);opacity:.9}to{transform:scale(1);opacity:0}}
+.blink{animation:blink 1.8s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.16}50%{opacity:1}}
+.bar{animation:bar 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes bar{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.scan{animation:scan 2.6s ease-in-out infinite alternate}
+@keyframes scan{from{transform:translateY(-24px)}to{transform:translateY(24px)}}
+.hue{animation:hue 6s linear infinite}
+@keyframes hue{0%,100%{fill:#8fe3c2}25%{fill:#6fd3e0}50%{fill:#7fb6ff}75%{fill:#ffb38a}}
+.star{animation:star 2.8s ease-in-out infinite}
+@keyframes star{0%,100%{transform:scale(.8);opacity:.7}50%{transform:scale(1.06);opacity:1}}
+.flicker{animation:flicker 3.4s linear infinite}
+@keyframes flicker{0%,40%,48%,56%,100%{opacity:1}44%{opacity:.3}52%{opacity:.55}}
+.typing{animation:typing 1.2s ease-in-out infinite}
+@keyframes typing{0%,60%,100%{opacity:.25;transform:none}
+30%{opacity:1;transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style><defs><path id="g1" d="M1.4 0V-13.8H6.6Q8.1 -13.8 9.2 -13.2Q10.3 -12.6 10.9 -11.6Q11.4 -10.6 11.4 -9.2Q11.4 -7.9 10.9 -6.9Q10.3 -5.9 9.2 -5.3Q8.1 -4.7 6.5 -4.7H3.1V-6.7H6.2Q7.1 -6.7 7.7 -7Q8.3 -7.4 8.6 -7.9Q8.9 -8.5 8.9 -9.2Q8.9 -10 8.6 -10.5Q8.3 -11.1 7.7 -11.4Q7.1 -11.7 6.2 -11.7H3.9V0H1.4Z"/><path id="g2" d="M5.8 0.2Q4.3 0.2 3.2 -0.5Q2 -1.1 1.4 -2.3Q0.8 -3.5 0.8 -5.1Q0.8 -6.7 1.4 -8Q2 -9.2 3.2 -9.8Q4.3 -10.5 5.8 -10.5Q7.3 -10.5 8.4 -9.8Q9.5 -9.2 10.1 -8Q10.7 -6.7 10.7 -5.1Q10.7 -3.5 10.1 -2.3Q9.5 -1.1 8.4 -0.5Q7.3 0.2 5.8 0.2ZM5.8 -1.7Q6.6 -1.7 7.2 -2.2Q7.7 -2.7 8 -3.4Q8.3 -4.2 8.3 -5.1Q8.3 -6.1 8 -6.9Q7.7 -7.6 7.2 -8.1Q6.6 -8.5 5.8 -8.5Q4.9 -8.5 4.4 -8.1Q3.8 -7.6 3.6 -6.9Q3.3 -6.1 3.3 -5.1Q3.3 -4.2 3.6 -3.4Q3.8 -2.7 4.4 -2.2Q4.9 -1.7 5.8 -1.7Z"/><path id="g3" d="M1.3 0V-10.4H3.6V-8.6H3.7Q4 -9.5 4.7 -10Q5.4 -10.5 6.3 -10.5Q6.5 -10.5 6.7 -10.5Q7 -10.5 7.2 -10.4V-8.2Q7 -8.3 6.7 -8.3Q6.4 -8.4 6 -8.4Q5.4 -8.4 4.8 -8.1Q4.3 -7.8 4 -7.3Q3.7 -6.8 3.7 -6.1V0H1.3Z"/><path id="g4" d="M6.1 -10.4V-8.5H0.2V-10.4H6.1ZM1.7 -12.8H4.1V-2.9Q4.1 -2.4 4.3 -2.1Q4.6 -1.8 5.1 -1.8Q5.3 -1.8 5.5 -1.9Q5.8 -1.9 6 -1.9L6.4 -0.1Q6 0 5.5 0.1Q5.1 0.1 4.7 0.1Q3.3 0.1 2.5 -0.6Q1.7 -1.3 1.7 -2.7V-12.8Z"/><path id="g5" d="M6.7 -10.4V-8.5H0.2V-10.4H6.7ZM2.1 0V-11.4Q2.1 -12.4 2.5 -13.1Q3 -13.8 3.7 -14.1Q4.4 -14.5 5.3 -14.5Q5.9 -14.5 6.4 -14.4Q6.9 -14.3 7.2 -14.2L6.7 -12.3Q6.5 -12.4 6.3 -12.4Q6.1 -12.5 5.8 -12.5Q5.1 -12.5 4.8 -12.1Q4.5 -11.8 4.5 -11.2V0H2.1Z"/><path id="g6" d="M3.7 -13.8V0H1.3V-13.8H3.7Z"/><path id="g7" d="M1.3 0V-10.4H3.7V0H1.3ZM2.5 -11.8Q1.9 -11.8 1.5 -12.2Q1.1 -12.6 1.1 -13.2Q1.1 -13.7 1.5 -14.1Q1.9 -14.5 2.5 -14.5Q3.1 -14.5 3.5 -14.1Q3.9 -13.7 3.9 -13.2Q3.9 -12.6 3.5 -12.2Q3.1 -11.8 2.5 -11.8Z"/></defs><rect width="154" height="56" rx="14" fill="#6fb39a"/><g fill="#06060a"><use href="#g1" x="26" y="34.8"/><use href="#g2" x="38.1" y="34.8"/><use href="#g3" x="49.7" y="34.8"/><use href="#g4" x="57.6" y="34.8"/><use href="#g5" x="63.7" y="34.8"/><use href="#g2" x="70.6" y="34.8"/><use href="#g6" x="82.2" y="34.8"/><use href="#g7" x="87.2" y="34.8"/><use href="#g2" x="92.2" y="34.8"/></g><path d="M116.2 33.5L127.2 22.5M119.8 22.5H127.2V29.9" fill="none" stroke="#06060a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
