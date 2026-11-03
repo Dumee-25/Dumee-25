@@ -15,14 +15,10 @@
 </p>
 
 <p>
-  <img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/quote.svg" width="100%" alt="Reproducible pipelines. Honest limitations. Runnable systems.">
-</p>
-
-<p>
   <a href="https://portfolio.kadpkumarapeli.workers.dev/#stack">
     <picture>
-      <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/stack-compact.svg">
-      <img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/stack.svg" width="100%" alt="Stack: Python, CUDA, PyTorch, React, Polars, OpenCV, Gemini, FastAPI, ChromaDB, Ollama, PostgreSQL, TensorFlow.">
+      <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/skills-compact.svg">
+      <img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/skills.svg" width="100%" alt="What I build, mostly in Python, TypeScript and SQL. LLM systems: RAG, tool-using agents, model routing and grounded extraction, seen in OWL, Tenax, Fulyn and doc_extract. Scientific ML: epidemic models with learned parts, survival analysis and calibration checks, seen in the dengue and oncology work and Argus. Vision and sensors: real-time detection and tracking, and a wearable IMU rig for gait data. Data engineering: Postgres warehouses and pipelines for research data. Privacy-first tools: local analysis with differential privacy and PII detection, seen in DataSense and Seshat. Full-stack apps: APIs, web apps and a packaged desktop app, with tests and type checks.">
     </picture>
   </a>
 </p>
@@ -31,16 +27,16 @@
   <a href="https://portfolio.kadpkumarapeli.workers.dev/inquiry">
     <picture>
       <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/stats-compact.svg">
-      <img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/stats.svg" width="100%" alt="3 systems built end to end. NSRSIT 2026: Best Overall Research, session award. ICCMM 2026: accepted for an oral presentation. ICACT 2026: submitted to Track 3, Digital Health.">
+      <img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/stats.svg" width="100%" alt="4 systems built end to end. NSRSIT 2026: Best Overall Research, session award. ICCMM 2026: accepted for an oral presentation. ICACT 2026: submitted to Track 3, Digital Health.">
     </picture>
   </a>
 </p>
 
 <p>
-  <a href="https://github.com/Dumee-25/OWL-Datacenter_agent">
+  <a href="https://portfolio.kadpkumarapeli.workers.dev/systems/datasense">
     <picture>
-      <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/project-owl-compact.svg">
-      <img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/project-owl.svg" width="100%" alt="OWL: AI operations assistant for datacenters. Gemini, PyTorch, MCP. Repository.">
+      <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/project-datasense-compact.svg">
+      <img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/project-datasense.svg" width="100%" alt="DataSense: audits a data file and suggests a model, without sending raw rows to an LLM. Polars, OpenDP, Ollama. Case study.">
     </picture>
   </a>
 </p>
@@ -55,15 +51,15 @@
 </p>
 
 <p>
-  <a href="https://github.com/Dumee-25/Argus">
+  <a href="https://github.com/Dumee-25/Fulyn">
     <picture>
-      <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/project-argus-compact.svg">
-      <img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/project-argus.svg" width="100%" alt="Argus: does a sensor-fusion map stay honest when sensors fail? Python, NumPy, Bayesian. Repository.">
+      <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/project-fulyn-compact.svg">
+      <img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/project-fulyn.svg" width="100%" alt="Fulyn: turns plain notes about your day into records you can ask about later. Ollama, pgvector, Next.js. Repository.">
     </picture>
   </a>
 </p>
 
-<p align="center"><sub>More: <a href="https://portfolio.kadpkumarapeli.workers.dev/systems/datasense">DataSense</a> · <a href="https://github.com/Dumee-25/Gait">Gait</a> · <a href="https://github.com/Dumee-25/Unspiral">Unspiral</a></sub></p>
+<p align="center"><sub>More: <a href="https://github.com/Dumee-25/OWL-Datacenter_agent">OWL</a> · <a href="https://github.com/Dumee-25/Argus">Argus</a> · <a href="https://github.com/Dumee-25/Gait">Gait</a> · <a href="https://github.com/Dumee-25/Unspiral">Unspiral</a></sub></p>
 
 <p>
   <a href="https://portfolio.kadpkumarapeli.workers.dev/inquiry/privacy-eda">
@@ -86,13 +82,6 @@
       <img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/pub-icact.svg" width="100%" alt="2026, submitted: A regime audit for reproduction numbers in hybrid epidemic models. ICACT 2026, Track 3, Digital Health and Computational Life Sciences.">
     </picture>
   </a>
-  <br>
-  <a href="https://portfolio.kadpkumarapeli.workers.dev/inquiry/oncology-proxy">
-    <picture>
-      <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/pub-oncology-compact.svg">
-      <img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/pub-oncology.svg" width="100%" alt="2026, under review: A composite clinical proxy for durable benefit in oncology, using real-world clinicogenomic data.">
-    </picture>
-  </a>
 </p>
 
 <p>
@@ -108,10 +97,4 @@
   </a>
 </p>
 
-<p align="center">
-  <a href="https://www.linkedin.com/in/dumindu-kumarapeli-7a4636309"><img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/button-linkedin.svg" height="46" alt="LinkedIn"></a>
-  <a href="https://portfolio.kadpkumarapeli.workers.dev/Dumindu-Kumarapeli-CV.pdf"><img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/button-cv.svg" height="46" alt="CV"></a>
-  <a href="https://portfolio.kadpkumarapeli.workers.dev"><img src="https://raw.githubusercontent.com/Dumee-25/Dumee-25/HEAD/assets/button-portfolio.svg" height="46" alt="Portfolio"></a>
-</p>
-
-<p align="center"><sub>Updated September 2026</sub></p>
+<p align="center"><sub>Updated November 2026</sub></p>

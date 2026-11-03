@@ -23,11 +23,9 @@ already holds the .woff2 files to skip the download.
 
 from __future__ import annotations
 
-import base64
 import functools
 import io
 import logging
-import math
 import os
 import tempfile
 import urllib.request
@@ -45,7 +43,6 @@ logger = logging.getLogger(__name__)
 
 TOOLS_DIR = Path(__file__).resolve().parent
 ASSETS_DIR = TOOLS_DIR.parent / "assets"
-PORTRAIT = TOOLS_DIR / "portrait.jpg"
 
 FONT_CDN = "https://cdn.jsdelivr.net/npm"
 _PLEX = "@fontsource/ibm-plex-mono@5.2.7/files"
@@ -73,8 +70,65 @@ NAME = "Dumindu Kumarapeli"
 BADGE = "OPEN TO ML ROLES + RESEARCH"
 TAGLINE = "I build research prototypes that ship."
 AFFILIATION = "DATA SCIENCE · NSBM GREEN UNIVERSITY · SRI LANKA"
-QUOTE = ("Reproducible pipelines.", "Honest limitations.", "Runnable systems.")
+LANGUAGES = "PYTHON · TYPESCRIPT · SQL"
 APOSTROPHE = "\u2019"  # typographic, for display text
+
+
+@dataclass(frozen=True)
+class Skill:
+    """One area of work, the tools behind it, and the projects that show it."""
+
+    motif: str
+    name: str
+    blurb: str
+    tools: tuple[str, ...]
+    seen_in: tuple[str, ...]
+
+
+SKILLS = (
+    Skill(
+        "ollama",
+        "LLM systems",
+        "RAG, tool-using agents, model routing and grounded extraction.",
+        ("GEMINI", "OLLAMA", "CHROMADB", "PGVECTOR", "MCP"),
+        ("OWL", "TENAX", "FULYN", "DOC_EXTRACT"),
+    ),
+    Skill(
+        "pytorch",
+        "Scientific ML",
+        "Epidemic models with learned parts, survival analysis and calibration checks.",
+        ("PYTORCH", "CUDA", "TORCHDIFFEQ", "SCIKIT-SURVIVAL", "XGBOOST"),
+        ("DENGUE", "ONCOLOGY", "ARGUS"),
+    ),
+    Skill(
+        "opencv",
+        "Vision and sensors",
+        "Real-time detection and tracking, and a wearable IMU rig for gait data.",
+        ("YOLOV8", "OPENCV", "BYTETRACK", "C++", "PLATFORMIO"),
+        ("PEOPLE COUNTER", "GAIT"),
+    ),
+    Skill(
+        "postgres",
+        "Data engineering",
+        "Postgres warehouses and pipelines for messy research data.",
+        ("POSTGRESQL", "POLARS", "SQLALCHEMY", "ALEMBIC", "PLOTLY"),
+        ("ALLEN BRAIN", "GAIT ANALYTICS"),
+    ),
+    Skill(
+        "lock",
+        "Privacy-first tools",
+        "Analysis that runs locally, with differential privacy and PII detection.",
+        ("OPENDP", "PRESIDIO", "OLLAMA", "SQLITE"),
+        ("DATASENSE", "SESHAT"),
+    ),
+    Skill(
+        "react",
+        "Full-stack apps",
+        "APIs, web apps and a packaged desktop app, with tests and type checks.",
+        ("FASTAPI", "REACT", "TYPESCRIPT", "NEXT.JS", "DOCKER"),
+        ("FULYN", "SESHAT", "TENAX"),
+    ),
+)
 
 
 @dataclass(frozen=True)
@@ -85,7 +139,7 @@ class Stat:
 
 
 STATS = (
-    Stat("BUILT", "3 systems", ("end to end, from data", "to deployment")),
+    Stat("BUILT", "4 systems", ("end to end, from data", "to deployment")),
     Stat("AWARD", "NSRSIT 2026", ("Best Overall Research,", "session award")),
     Stat("TALK", "ICCMM 2026", ("accepted for an oral", "presentation")),
     Stat("PAPER", "ICACT 2026", ("submitted to Track 3,", "Digital Health")),
@@ -98,10 +152,17 @@ class Project:
     name: str
     blurb: str
     tags: tuple[str, ...]
+    link: str = "REPOSITORY"  # the DataSense repo is private, so it links to its system page
 
 
 PROJECTS = (
-    Project("owl", "OWL", "AI operations assistant for datacenters.", ("GEMINI", "PYTORCH", "MCP")),
+    Project(
+        "datasense",
+        "DataSense",
+        "Audits a data file and suggests a model, without sending raw rows to an LLM.",
+        ("POLARS", "OPENDP", "OLLAMA"),
+        link="CASE STUDY",
+    ),
     Project(
         "seshat",
         "Seshat",
@@ -109,10 +170,10 @@ PROJECTS = (
         ("OLLAMA", "SQLITE", "REACT"),
     ),
     Project(
-        "argus",
-        "Argus",
-        "Does a sensor-fusion map stay honest when sensors fail?",
-        ("PYTHON", "NUMPY", "BAYESIAN"),
+        "fulyn",
+        "Fulyn",
+        "Turns plain notes about your day into records you can ask about later.",
+        ("OLLAMA", "PGVECTOR", "NEXT.JS"),
     ),
 )
 
@@ -152,14 +213,6 @@ PUBLICATIONS = (
         "A regime audit for reproduction numbers in hybrid epidemic models",
         "ICACT 2026 · Track 3, Digital Health and Computational Life Sciences",
     ),
-    Publication(
-        "oncology",
-        "2026",
-        "UNDER REVIEW",
-        False,
-        "A composite clinical proxy for durable benefit in oncology",
-        "Real-world clinicogenomic data",
-    ),
 )
 
 BUTTONS = (
@@ -169,39 +222,10 @@ BUTTONS = (
     ("email", "Email", False),
 )
 
-# Reliability curves from Argus (github.com/Dumee-25/Argus), using the worlds,
-# seeds, trial count and step count of experiments/trust_misspecification.py:
-# 2000 trials of 15 steps, thermal sensor alone, true decoy rate 0.35. Each
-# pair is (mean stated confidence, observed frequency) for one occupied bin.
-HONEST = (  # assumed decoy rate 0.35, the sensor's real one
-    (0.0634, 0.0696),
-    (0.1600, 0.1427),
-    (0.2554, 0.2525),
-    (0.3500, 0.3463),
-    (0.4491, 0.4417),
-    (0.5468, 0.5679),
-    (0.6479, 0.6498),
-    (0.7458, 0.7390),
-    (0.8386, 0.8807),
-    (0.9302, 0.9590),
-)
-OVERTRUSTED = (  # assumed decoy rate 0.0: told it never falls for a decoy
-    (0.0981, 0.0811),
-    (0.1425, 0.0687),
-    (0.2516, 0.0831),
-    (0.3504, 0.0605),
-    (0.4505, 0.0550),
-    (0.5475, 0.0465),
-    (0.6479, 0.0454),
-    (0.7488, 0.0460),
-    (0.8490, 0.0443),
-    (0.9331, 0.0447),
-)
-
 # One stylesheet for every asset. Durations follow the spec: the aurora drifts
 # over 24 to 32 seconds, status dots pulse every 2 seconds.
 STYLE = """
-.d1,.d2,.d3,.halo,.ring,.star{transform-box:fill-box;transform-origin:center}
+.d1,.d2,.d3,.halo,.ring{transform-box:fill-box;transform-origin:center}
 .d1{animation:d1 27s ease-in-out infinite alternate}
 .d2{animation:d2 31s ease-in-out infinite alternate}
 .d3{animation:d3 24s ease-in-out infinite alternate}
@@ -210,26 +234,14 @@ STYLE = """
 @keyframes d3{to{transform:translate(70px,-48px) scale(1.14)}}
 .halo{animation:halo 2s ease-out infinite}
 @keyframes halo{from{transform:scale(1);opacity:.6}to{transform:scale(2.8);opacity:0}}
-.bob{animation:bob 3.2s ease-in-out infinite}
-@keyframes bob{50%{transform:translateY(-7px)}}
 .spin{animation:spin 6s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.bounce{animation:bounce 1.3s ease-in-out infinite}
-@keyframes bounce{50%{transform:translateY(-13px)}}
 .ring{animation:ring 2.4s ease-out infinite}
 @keyframes ring{from{transform:scale(.2);opacity:.9}to{transform:scale(1);opacity:0}}
 .blink{animation:blink 1.8s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:.16}50%{opacity:1}}
-.bar{animation:bar 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
-@keyframes bar{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
 .scan{animation:scan 2.6s ease-in-out infinite alternate}
 @keyframes scan{from{transform:translateY(-24px)}to{transform:translateY(24px)}}
-.hue{animation:hue 6s linear infinite}
-@keyframes hue{0%,100%{fill:#8fe3c2}25%{fill:#6fd3e0}50%{fill:#7fb6ff}75%{fill:#ffb38a}}
-.star{animation:star 2.8s ease-in-out infinite}
-@keyframes star{0%,100%{transform:scale(.8);opacity:.7}50%{transform:scale(1.06);opacity:1}}
-.flicker{animation:flicker 3.4s linear infinite}
-@keyframes flicker{0%,40%,48%,56%,100%{opacity:1}44%{opacity:.3}52%{opacity:.55}}
 .typing{animation:typing 1.2s ease-in-out infinite}
 @keyframes typing{0%,60%,100%{opacity:.25;transform:none}
 30%{opacity:1;transform:translateY(-3px)}}
@@ -559,6 +571,12 @@ def status_dot(x: float, y: float, r: float, colour: str, *, pulse: bool) -> str
     return halo + f'<circle cx="{_number(x)}" cy="{_number(y)}" r="{r}" fill="{colour}"/>'
 
 
+def chip_width(text: str, size: float, *, dot: bool) -> float:
+    """Outer width of the pill that `chip` draws for `text`."""
+    text_width = measure("mono-medium", text, size, tracking=0.12)
+    return (size * 2.8 if dot else size * 1.6) + text_width + size * 1.3
+
+
 def chip(
     canvas: Canvas,
     x: float,
@@ -572,10 +590,9 @@ def chip(
 ) -> tuple[str, float]:
     """A pill label. positive=True is green, False neutral, None a plain tag."""
     tracking = 0.12
-    text_width = measure("mono-medium", text, size, tracking=tracking)
     height = size * 2.35
     has_dot = positive is not None
-    width = (size * 2.8 if has_dot else size * 1.6) + text_width + size * 1.3
+    width = chip_width(text, size, dot=has_dot)
     if anchor == "end":
         x -= width
     elif anchor == "middle":
@@ -650,46 +667,24 @@ def eyebrow(
 # ---- Hero ----
 
 
-def _portrait(canvas: Canvas, cx: float, cy: float, rx: float, ry: float) -> str:
-    """The photo in a vertical oval, set in a glass ring."""
-    clip = canvas.uid("oval")
-    canvas.define(
-        f'<clipPath id="{clip}"><ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}"/></clipPath>'
-    )
-    photo = base64.b64encode(PORTRAIT.read_bytes()).decode()
-    rim = canvas.linear(
-        ((0, "#fff", 0.55), (0.45, "#fff", 0.08), (1, "#fff", 0.3)), 0.15, 0, 0.85, 1
-    )
-    return (
-        f'<ellipse cx="{cx}" cy="{cy}" rx="{rx + 11}" ry="{ry + 11}" fill="#fff" '
-        'fill-opacity=".06" stroke="#fff" stroke-opacity=".14"/>'
-        f'<image href="data:image/jpeg;base64,{photo}" x="{cx - rx}" y="{cy - ry}" '
-        f'width="{2 * rx}" height="{2 * ry}" preserveAspectRatio="xMidYMid slice" '
-        f'clip-path="url(#{clip})"/>'
-        f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="none" '
-        f'stroke="url(#{rim})" stroke-width="2"/>'
-    )
-
-
 def hero(*, compact: bool) -> str:
     canvas = Canvas()
     if compact:
-        width, height, radius, cx = 640, 836, 36, 320
+        width, height, radius, cx = 640, 592, 36, 320
         blobs = (
-            Blob(150, 190, 330, 260, GLOW_GREEN, 0.34),
-            Blob(520, 150, 300, 240, GLOW_TEAL, 0.26),
-            Blob(330, 760, 420, 280, GLOW_BLUE, 0.32),
+            Blob(150, 130, 330, 240, GLOW_GREEN, 0.34),
+            Blob(520, 100, 300, 220, GLOW_TEAL, 0.26),
+            Blob(330, 530, 420, 260, GLOW_BLUE, 0.32),
         )
         parts = [
             backdrop(canvas, width, height, radius, blobs, animate=True),
             glass(canvas, 18, 18, width - 36, height - 36, 32),
-            _portrait(canvas, cx, 186, 80, 100),
         ]
         badge, _ = chip(
-            canvas, cx, 344, BADGE, positive=True, size=14.5, pulse=True, anchor="middle"
+            canvas, cx, 100, BADGE, positive=True, size=14.5, pulse=True, anchor="middle"
         )
         parts.append(badge)
-        for line, baseline in (("Dumindu", 456), ("Kumarapeli", 530)):
+        for line, baseline in (("Dumindu", 212), ("Kumarapeli", 286)):
             parts.append(
                 canvas.text(
                     "sans",
@@ -702,7 +697,7 @@ def hero(*, compact: bool) -> str:
                     anchor="middle",
                 ).markup
             )
-        for line, baseline in (("I build research prototypes", 606), ("that ship.", 650)):
+        for line, baseline in (("I build research prototypes", 362), ("that ship.", 406)):
             parts.append(
                 canvas.text(
                     "sans",
@@ -717,29 +712,28 @@ def hero(*, compact: bool) -> str:
                 ).markup
             )
         for line, baseline in (
-            ("DATA SCIENCE UNDERGRADUATE", 734),
-            ("NSBM GREEN UNIVERSITY · SRI LANKA", 768),
+            ("DATA SCIENCE UNDERGRADUATE", 490),
+            ("NSBM GREEN UNIVERSITY · SRI LANKA", 524),
         ):
             parts.append(eyebrow(canvas, line, x=cx, y=baseline, anchor="middle", size=17))
     else:
-        width, height, radius, cx = 1200, 680, 40, 600
+        width, height, radius, cx = 1200, 442, 40, 600
         blobs = (
-            Blob(280, 170, 480, 330, GLOW_GREEN, 0.32),
-            Blob(940, 150, 430, 300, GLOW_TEAL, 0.24),
-            Blob(640, 610, 580, 300, GLOW_BLUE, 0.3),
+            Blob(280, 110, 480, 260, GLOW_GREEN, 0.32),
+            Blob(940, 100, 430, 240, GLOW_TEAL, 0.24),
+            Blob(640, 400, 580, 240, GLOW_BLUE, 0.3),
         )
         parts = [
             backdrop(canvas, width, height, radius, blobs, animate=True),
             glass(canvas, 28, 28, width - 56, height - 56, 36),
-            _portrait(canvas, cx, 196, 86, 108),
         ]
         badge, _ = chip(
-            canvas, cx, 358, BADGE, positive=True, size=13.5, pulse=True, anchor="middle"
+            canvas, cx, 120, BADGE, positive=True, size=13.5, pulse=True, anchor="middle"
         )
         parts.append(badge)
         parts.append(
             canvas.text(
-                "sans", NAME, 74, x=cx, y=466, axes=display(700), tracking=-0.035, anchor="middle"
+                "sans", NAME, 74, x=cx, y=228, axes=display(700), tracking=-0.035, anchor="middle"
             ).markup
         )
         parts.append(
@@ -748,14 +742,14 @@ def hero(*, compact: bool) -> str:
                 TAGLINE,
                 31,
                 x=cx,
-                y=520,
+                y=282,
                 axes=display(600),
                 tracking=-0.01,
                 anchor="middle",
                 gradient=GRADIENT,
             ).markup
         )
-        parts.append(eyebrow(canvas, AFFILIATION, x=cx, y=580, anchor="middle"))
+        parts.append(eyebrow(canvas, AFFILIATION, x=cx, y=342, anchor="middle"))
     title = f"{NAME}. {TAGLINE} Open to ML roles and research."
     return canvas.document(width, height, title, "".join(parts))
 
@@ -787,41 +781,7 @@ def button(label: str, *, primary: bool) -> str:
     return canvas.document(width, height, label, body)
 
 
-# ---- Quote ----
-
-
-def quote() -> str:
-    canvas = Canvas()
-    width, height = 1200, 340
-    blobs = (Blob(230, 150, 420, 240, GLOW_GREEN, 0.2), Blob(980, 210, 430, 240, GLOW_BLUE, 0.22))
-    parts = [backdrop(canvas, width, height, 36, blobs, animate=False)]
-    for line, baseline in zip(QUOTE, (120, 188, 256), strict=True):
-        parts.append(
-            canvas.text(
-                "sans",
-                line,
-                54,
-                x=width / 2,
-                y=baseline,
-                axes=display(700),
-                tracking=-0.03,
-                anchor="middle",
-                gradient=GRADIENT,
-            ).markup
-        )
-    return canvas.document(width, height, " ".join(QUOTE), "".join(parts))
-
-
-# ---- Tech stack motifs, each drawn in a 100 x 100 box centred on 0,0 ----
-
-
-def _python() -> str:
-    return (
-        f'<rect class="bob" x="-31" y="-26" width="32" height="32" rx="9" fill="{BLUE}" '
-        'fill-opacity=".9"/>'
-        f'<rect class="bob" style="animation-delay:-1.6s" x="-1" y="-4" width="32" '
-        f'height="32" rx="9" fill="{MINT}" fill-opacity=".9"/>'
-    )
+# ---- Skill motifs, each drawn in a 100 x 100 box centred on 0,0 ----
 
 
 def _pytorch() -> str:
@@ -830,14 +790,6 @@ def _pytorch() -> str:
         f'<circle r="7" fill="{PEACH}"/>'
         f'<g class="spin" style="animation-duration:4.5s"><circle cx="26" r="5.5" '
         f'fill="{MINT}"/></g>'
-    )
-
-
-def _tensorflow() -> str:
-    return "".join(
-        f'<circle class="bounce" style="animation-delay:{delay}s" cx="{cx}" cy="8" r="7" '
-        f'fill="{colour}"/>'
-        for cx, delay, colour in ((-22, 0, PEACH), (0, 0.15, TEAL), (22, 0.3, BLUE))
     )
 
 
@@ -860,26 +812,6 @@ def _postgres() -> str:
     return rings + f'<circle r="6" fill="{BLUE}"/>'
 
 
-def _cuda() -> str:
-    cells = []
-    for row in range(4):
-        for col in range(4):
-            cells.append(
-                f'<rect class="blink" style="animation-delay:{(row + col) * 0.14:.2f}s" '
-                f'x="{-31 + col * 16}" y="{-31 + row * 16}" width="12" height="12" rx="3" '
-                f'fill="{MINT}"/>'
-            )
-    return "".join(cells)
-
-
-def _polars() -> str:
-    return "".join(
-        f'<rect class="bar" style="animation-delay:{-index * 0.22:.2f}s" x="{-32 + index * 14}" '
-        f'y="-26" width="9" height="52" rx="3" fill="{BLUE if index % 2 else TEAL}"/>'
-        for index in range(5)
-    )
-
-
 def _opencv() -> str:
     corner = (
         'fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2.2" stroke-linecap="round"'
@@ -892,28 +824,6 @@ def _opencv() -> str:
         corners + '<g class="scan">'
         f'<rect x="-26" y="-7" width="52" height="14" fill="{MINT}" fill-opacity=".12"/>'
         f'<rect x="-26" y="-1" width="52" height="2" rx="1" fill="{MINT}"/></g>'
-    )
-
-
-def _chroma() -> str:
-    return "".join(
-        f'<circle class="hue" style="animation-delay:{delay}s" cx="{cx}" cy="{cy}" r="17" '
-        'fill-opacity=".82"/>'
-        for cx, cy, delay in ((-12, -8, 0), (12, -8, -2), (0, 13, -4))
-    )
-
-
-def _gemini() -> str:
-    return (
-        '<path class="star" d="M0 -34C3 -10 10 -3 34 0C10 3 3 10 0 34C-3 10 -10 3 -34 0'
-        f'C-10 -3 -3 -10 0 -34Z" fill="{BLUE}"/>'
-    )
-
-
-def _fastapi() -> str:
-    return (
-        f'<circle r="30" fill="{TEAL}" fill-opacity=".1" stroke="{TEAL}" stroke-opacity=".45"/>'
-        f'<path class="flicker" d="M5 -22L-12 4H0L-5 22L12 -4H0Z" fill="{TEAL}"/>'
     )
 
 
@@ -931,98 +841,192 @@ def _ollama() -> str:
     return bubble + dots
 
 
+def _lock() -> str:
+    shackle = (
+        '<path d="M-16 -6V-16A16 16 0 0 1 16 -16V-6" fill="none" stroke="#fff" '
+        'stroke-opacity=".5" stroke-width="5" stroke-linecap="round"/>'
+    )
+    body = (
+        f'<rect x="-26" y="-8" width="52" height="40" rx="9" fill="{MINT}" fill-opacity=".14" '
+        f'stroke="{MINT}" stroke-opacity=".6" stroke-width="1.8"/>'
+    )
+    keyhole = (
+        f'<g class="blink"><circle cy="8" r="5" fill="{MINT}"/>'
+        f'<rect x="-2" y="10" width="4" height="11" rx="2" fill="{MINT}"/></g>'
+    )
+    return shackle + body + keyhole
+
+
 MOTIFS: dict[str, Callable[[], str]] = {
-    "Python": _python,
-    "PyTorch": _pytorch,
-    "TensorFlow": _tensorflow,
-    "React": _react,
-    "PostgreSQL": _postgres,
-    "CUDA": _cuda,
-    "Polars": _polars,
-    "OpenCV": _opencv,
-    "ChromaDB": _chroma,
-    "Gemini": _gemini,
-    "FastAPI": _fastapi,
-    "Ollama": _ollama,
+    "ollama": _ollama,
+    "pytorch": _pytorch,
+    "opencv": _opencv,
+    "postgres": _postgres,
+    "lock": _lock,
+    "react": _react,
 }
 
-# Twelve-column bento: (tool, column span) per row, each row summing to 12.
-BENTO_ROWS = (
-    (("Python", 4), ("CUDA", 2), ("PyTorch", 3), ("React", 3)),
-    (("Polars", 3), ("OpenCV", 3), ("Gemini", 2), ("FastAPI", 4)),
-    (("ChromaDB", 2), ("Ollama", 4), ("PostgreSQL", 3), ("TensorFlow", 3)),
-)
+
+# ---- Skills: what I build, the tools behind it, and where to see it ----
 
 
-def _tile(
-    canvas: Canvas, tool: str, x: float, y: float, w: float, h: float, *, label_size: float
+ChipRows = list[list[tuple[str, float]]]
+
+
+@dataclass(frozen=True)
+class CardType:
+    """Sizes for one skills layout. Vertical spacing is derived from these."""
+
+    pad: float
+    title: float
+    body: float
+    line: float
+    chip: float
+    seen: float
+    motif: float  # scale applied to the 100 x 100 motif box
+
+
+def _flow(tags: tuple[str, ...], size: float, max_width: float) -> ChipRows:
+    """Wrap chips into rows that fit `max_width`."""
+    gap = size * 0.7
+    rows: ChipRows = [[]]
+    used = 0.0
+    for tag in tags:
+        width = chip_width(tag, size, dot=False)
+        if rows[-1] and used + gap + width > max_width:
+            rows.append([])
+            used = 0.0
+        used += (gap if rows[-1] else 0) + width
+        rows[-1].append((tag, width))
+    return rows
+
+
+def _skill_offsets(
+    skill: Skill, w: float, t: CardType
+) -> tuple[list[str], ChipRows, dict[str, float]]:
+    """Lines, chip rows and baselines (relative to the card top) for one card."""
+    inner = w - 2 * t.pad
+    lines = wrap("sans", skill.blurb, t.body, inner, axes=reading(400))
+    rows = _flow(skill.tools, t.chip, inner)
+    title_y = t.pad + t.title * 1.5
+    body_y = title_y + t.body * 2.1
+    chips_y = body_y + (len(lines) - 1) * t.line + t.chip * 3.1
+    rule_y = chips_y + (len(rows) - 1) * t.chip * 3.1 + t.chip * 2.8
+    seen_y = rule_y + t.seen * 2.5
+    offsets = {
+        "title": title_y,
+        "body": body_y,
+        "chips": chips_y,
+        "rule": rule_y,
+        "seen": seen_y,
+        "height": seen_y + t.pad * 0.95,
+    }
+    return lines, rows, offsets
+
+
+def _skill_card(
+    canvas: Canvas, skill: Skill, x: float, y: float, w: float, h: float, t: CardType
 ) -> str:
-    wide = w / h > 1.9
-    if wide:
-        cx, cy, scale = x + w - h * 0.52, y + h / 2 - 4, min(1.0, (h - 40) / 90)
-    else:
-        cx, cy, scale = x + w / 2, y + (h - 38) / 2 + 4, min(1.0, (h - 64) / 84)
+    lines, rows, at = _skill_offsets(skill, w, t)
+    half = 50 * t.motif
+    motif_x, motif_y = x + w - t.pad - half + 4, y + t.pad + half - 2
+    title_room = w - 2 * t.pad - 2 * half - 8
+    title_size = fit("sans", skill.name, t.title, title_room, axes=display(700), tracking=-0.02)
     motif = (
-        f'<g transform="translate({_number(cx)} {_number(cy)}) scale({scale:.2f})">'
-        f"{MOTIFS[tool]()}</g>"
+        f'<g transform="translate({_number(motif_x)} {_number(motif_y)}) scale({t.motif})">'
+        f"{MOTIFS[skill.motif]()}</g>"
     )
-    label = canvas.text("sans", tool, label_size, x=x + 20, y=y + h - 20, axes=reading(600))
-    return glass(canvas, x, y, w, h, 22, strength=0.9) + motif + label.markup
+    parts = [
+        glass(canvas, x, y, w, h, 22, strength=0.9),
+        motif,
+        canvas.text(
+            "sans",
+            skill.name,
+            title_size,
+            x=x + t.pad,
+            y=y + at["title"],
+            axes=display(700),
+            tracking=-0.02,
+        ).markup,
+    ]
+    for index, line in enumerate(lines):
+        parts.append(
+            canvas.text(
+                "sans",
+                line,
+                t.body,
+                x=x + t.pad,
+                y=y + at["body"] + index * t.line,
+                fill=BODY,
+                axes=reading(400),
+            ).markup
+        )
+    for row_index, row in enumerate(rows):
+        cx = x + t.pad
+        cy = y + at["chips"] + row_index * t.chip * 3.1
+        for tag, width in row:
+            markup, _ = chip(canvas, cx, cy, tag, positive=None, size=t.chip)
+            parts.append(markup)
+            cx += width + t.chip * 0.7
+    # The "seen in" line sits on the card's bottom edge, so it lines up across a row.
+    seen_y = y + h - (at["height"] - at["seen"])
+    rule = seen_y - (at["seen"] - at["rule"])
+    parts.append(
+        f'<path d="M{_number(x + t.pad)} {_number(rule)}H{_number(x + w - t.pad)}" '
+        'stroke="#fff" stroke-opacity=".09"/>'
+    )
+    text_x = x + t.pad + t.seen * 1.6
+    names = " · ".join(skill.seen_in)
+    size = fit("mono-medium", names, t.seen, x + w - t.pad - text_x, tracking=0.12)
+    parts.append(arrow(x + t.pad + t.seen * 0.45, seen_y - t.seen * 0.36, t.seen * 0.85, MINT))
+    parts.append(
+        canvas.text("mono-medium", names, size, x=text_x, y=seen_y, fill=MINT, tracking=0.12).markup
+    )
+    return "".join(parts)
 
 
-def bento(*, compact: bool) -> str:
+def skills(*, compact: bool) -> str:
     canvas = Canvas()
+    gap = 14
     if compact:
-        width, pad, gap, tile_h, columns = 640, 20, 14, 132, 2
-        tools = [tool for row in BENTO_ROWS for tool, _ in row]
-        rows = (len(tools) + columns - 1) // columns
-        top = 74
-        height = top + rows * tile_h + (rows - 1) * gap + pad
-        blobs = (
-            Blob(120, 260, 300, 380, GLOW_GREEN, 0.18),
-            Blob(520, 760, 300, 380, GLOW_BLUE, 0.2),
-        )
-        parts = [
-            backdrop(canvas, width, height, 32, blobs, animate=False),
-            eyebrow(canvas, "STACK", x=pad + 4, y=50, size=15),
-        ]
-        tile_w = (width - 2 * pad - gap) / columns
-        for index, tool in enumerate(tools):
-            row, col = divmod(index, columns)
-            parts.append(
-                _tile(
-                    canvas,
-                    tool,
-                    pad + col * (tile_w + gap),
-                    top + row * (tile_h + gap),
-                    tile_w,
-                    tile_h,
-                    label_size=20,
-                )
-            )
+        width, pad, top, columns = 640, 20, 74, 1
+        card = CardType(pad=30, title=32, body=21, line=30, chip=14.5, seen=16, motif=0.72)
+        header_size = 15
     else:
-        width, pad, gap, tile_h = 1200, 28, 14, 170
-        top = 80
-        rows = len(BENTO_ROWS)
-        height = top + rows * tile_h + (rows - 1) * gap + pad
-        blobs = (
-            Blob(200, 180, 420, 280, GLOW_GREEN, 0.2),
-            Blob(1000, 520, 460, 300, GLOW_BLUE, 0.22),
-            Blob(640, 330, 380, 240, GLOW_TEAL, 0.12),
-        )
-        parts = [
-            backdrop(canvas, width, height, 36, blobs, animate=False),
-            eyebrow(canvas, "STACK", x=pad + 6, y=54),
-        ]
-        unit = (width - 2 * pad - 11 * gap) / 12
-        for row_index, row in enumerate(BENTO_ROWS):
-            x = pad
-            y = top + row_index * (tile_h + gap)
-            for tool, span in row:
-                w = span * unit + (span - 1) * gap
-                parts.append(_tile(canvas, tool, x, y, w, tile_h, label_size=19))
-                x += w + gap
-    title = "Stack: " + ", ".join(tool for row in BENTO_ROWS for tool, _ in row)
+        width, pad, top, columns = 1200, 28, 80, 3
+        card = CardType(pad=26, title=26, body=18, line=26, chip=12.5, seen=13.5, motif=0.56)
+        header_size = 14
+    card_w = (width - 2 * pad - (columns - 1) * gap) / columns
+    needed = [_skill_offsets(s, card_w, card)[2]["height"] for s in SKILLS]
+    # In a grid every card takes the height of the tallest, so the rows line up.
+    # A single column has nothing to line up with, so each card fits its content.
+    heights = needed if columns == 1 else [max(needed)] * len(SKILLS)
+    tops, cursor = [], float(top)
+    for index in range(len(heights)):
+        if index % columns == 0 and index:
+            cursor += heights[index - 1] + gap
+        tops.append(cursor)
+    height = tops[-1] + heights[-1] + pad
+    blobs = (
+        Blob(width * 0.17, height * 0.25, width * 0.36, height * 0.4, GLOW_GREEN, 0.2),
+        Blob(width * 0.83, height * 0.75, width * 0.38, height * 0.42, GLOW_BLUE, 0.22),
+        Blob(width * 0.53, height * 0.5, width * 0.32, height * 0.3, GLOW_TEAL, 0.12),
+    )
+    header_y = 54 if not compact else 50
+    parts = [
+        backdrop(canvas, width, height, 36 if not compact else 32, blobs, animate=False),
+        eyebrow(canvas, "WHAT I BUILD", x=pad + 6, y=header_y, size=header_size),
+        eyebrow(canvas, LANGUAGES, x=width - pad - 6, y=header_y, anchor="end", size=header_size),
+    ]
+    for index, skill in enumerate(SKILLS):
+        col = index % columns
+        x = pad + col * (card_w + gap)
+        parts.append(_skill_card(canvas, skill, x, tops[index], card_w, heights[index], card))
+    title = "What I build. " + " ".join(
+        f"{s.name}: {s.blurb} Tools: {', '.join(s.tools).title()}. "
+        f"Seen in {', '.join(s.seen_in).title()}."
+        for s in SKILLS
+    )
     return canvas.document(width, height, title, "".join(parts))
 
 
@@ -1110,52 +1114,94 @@ def _preview_frame(canvas: Canvas) -> str:
     return f'<rect width="560" height="364" rx="18" fill="#0a0a10"/>{grid}'
 
 
-def _owl_art(canvas: Canvas) -> str:
-    def signal(x: float, base: float, amplitude: float) -> float:
-        return base + amplitude * (math.sin(x / 37) + 0.45 * math.sin(x / 13 + 1.3))
-
-    xs = range(30, 531, 6)
-    points = []
-    for x in xs:
-        y = signal(x, 196, 20)
-        if 372 <= x <= 408:  # the anomaly
-            y -= 110 * math.exp(-(((x - 390) / 9) ** 2))
-        points.append((x, y))
-    line = " ".join(f"{x},{y:.1f}" for x, y in points)
-    area = f"M30 300L{line.replace(' ', 'L')}L530 300Z".replace(",", " ")
-    fill = canvas.linear(((0, BLUE, 0.22), (1, BLUE, 0)), 0, 0, 0, 1)
-    second = " ".join(f"{x},{signal(x + 90, 258, 9):.1f}" for x in xs)
-    spike_y = min(y for x, y in points if 372 <= x <= 408)
-    racks = "".join(
-        f'<rect x="{34 + i * 50}" y="316" width="40" height="26" rx="6" '
-        + (
-            f'fill="{PEACH}" fill-opacity=".16" stroke="{PEACH}" stroke-opacity=".7"/>'
-            f'<circle cx="{54 + i * 50}" cy="329" r="3" fill="{PEACH}"/>'
-            if i == 7
-            else 'fill="#fff" fill-opacity=".05" stroke="#fff" stroke-opacity=".1"/>'
+def _datasense_art(canvas: Canvas) -> str:
+    """A data file under audit. Only computed facts cross the lock to the model."""
+    left, top, cell_w, col_step, row_step = 30, 34, 44, 52, 27
+    skewed, missing = 2, {(1, 1), (4, 3), (6, 1), (7, 3)}
+    # The skewed column is tinted behind its cells.
+    column_tint = (
+        f'<rect x="{left + skewed * col_step - 5}" y="{top - 6}" width="{cell_w + 10}" '
+        f'height="268" rx="10" fill="{TEAL}" fill-opacity=".08" stroke="{TEAL}" '
+        'stroke-opacity=".35"/>'
+    )
+    parts = [_preview_frame(canvas), column_tint]
+    for col in range(4):
+        x = left + col * col_step
+        parts.append(
+            f'<rect x="{x}" y="{top}" width="30" height="8" rx="4" fill="#fff" fill-opacity=".3"/>'
         )
-        for i in range(10)
+        for row in range(9):
+            y = top + 22 + row * row_step
+            if (row, col) in missing:
+                parts.append(
+                    f'<rect x="{x + 0.5}" y="{y + 0.5}" width="{cell_w - 1}" height="17" rx="5" '
+                    f'fill="none" stroke="{PEACH}" stroke-opacity=".75" stroke-dasharray="3 3"/>'
+                )
+                continue
+            bar = 14 + (row * 7 + col * 13) % 22
+            parts.append(
+                f'<rect x="{x}" y="{y}" width="{cell_w}" height="18" rx="5" fill="#fff" '
+                f'fill-opacity=".045"/><rect x="{x + 7}" y="{y + 6}" width="{bar}" height="6" '
+                'rx="3" fill="#fff" fill-opacity=".22"/>'
+            )
+        # A quality meter under each column: full, missing values, or skewed.
+        colour, share = (
+            (PEACH, 0.56) if col in (1, 3) else (TEAL, 0.8) if col == skewed else (MINT, 1.0)
+        )
+        parts.append(
+            f'<rect x="{x}" y="306" width="{cell_w}" height="6" rx="3" fill="#fff" '
+            f'fill-opacity=".08"/><rect x="{x}" y="306" width="{cell_w * share:.1f}" '
+            f'height="6" rx="3" fill="{colour}"/>'
+        )
+    parts.append(
+        '<g class="scan">'
+        f'<rect x="24" y="150" width="212" height="22" fill="{MINT}" fill-opacity=".08"/>'
+        f'<rect x="24" y="160" width="212" height="1.5" fill="{MINT}" fill-opacity=".55"/></g>'
     )
-    bars = "".join(
-        f'<rect x="{58}" y="{y}" width="{w}" height="7" rx="3.5" fill="#fff" fill-opacity="{o}"/>'
-        for y, w, o in ((46, 130, 0.22), (60, 150, 0.12), (74, 96, 0.12))
+
+    # The privacy boundary: raw rows stay on the left.
+    parts.append(
+        '<path d="M266 30V334" stroke="#fff" stroke-opacity=".16" stroke-dasharray="3 5"/>'
+        '<circle cx="266" cy="182" r="21" fill="#0a0a10" stroke="#fff" stroke-opacity=".16"/>'
+        f'<g transform="translate(266 183) scale(.42)">{_lock()}</g>'
     )
-    return (
-        _preview_frame(canvas)
-        + f'<path d="{area}" fill="url(#{fill})"/>'
-        + f'<polyline points="{second}" fill="none" stroke="{MINT}" stroke-opacity=".45" '
-        'stroke-width="1.6"/>'
-        + f'<rect x="372" y="24" width="36" height="276" fill="{PEACH}" fill-opacity=".07"/>'
-        + f'<path d="M390 28V300" stroke="{PEACH}" stroke-opacity=".6" stroke-dasharray="3 5"/>'
-        + f'<polyline points="{line}" fill="none" stroke="{BLUE}" stroke-width="2.4" '
-        'stroke-linejoin="round"/>'
-        + status_dot(390, spike_y, 5, PEACH, pulse=True)
-        + '<rect x="30" y="30" width="206" height="62" rx="14" fill="#fff" fill-opacity=".05" '
-        'stroke="#fff" stroke-opacity=".12"/>'
-        + f'<circle cx="46" cy="50" r="5" fill="{MINT}"/>'
-        + bars
-        + racks
+
+    # Right: the distribution it found, the facts it sends, the advice it gets back.
+    parts.append(
+        '<rect x="296" y="30" width="234" height="136" rx="14" fill="#fff" fill-opacity=".04" '
+        'stroke="#fff" stroke-opacity=".1"/>'
+        '<path d="M308 150.5H518" stroke="#fff" stroke-opacity=".2"/>'
     )
+    for index, bar in enumerate((34, 80, 96, 84, 62, 44, 30, 19, 11)):
+        parts.append(
+            f'<rect x="{312 + index * 20}" y="{150 - bar}" width="14" height="{bar}" rx="3" '
+            f'fill="{TEAL}" fill-opacity=".8"/>'
+        )
+    parts.append(
+        f'<rect x="500" y="136" width="14" height="14" rx="3" fill="{PEACH}"/>'
+        + status_dot(507, 122, 4, PEACH, pulse=True)
+    )
+    for index, (colour, bar) in enumerate(((PEACH, 96), (TEAL, 74), (PEACH, 86))):
+        cy = 198 + index * 32
+        parts.append(
+            f'<rect x="296" y="{cy - 12}" width="170" height="24" rx="12" fill="#fff" '
+            f'fill-opacity=".05" stroke="#fff" stroke-opacity=".12"/>'
+            f'<circle cx="311" cy="{cy}" r="4" fill="{colour}"/>'
+            f'<rect x="323" y="{cy - 3}" width="{bar}" height="6" rx="3" fill="#fff" '
+            'fill-opacity=".3"/>'
+            f'<path d="M466 {cy}H486" stroke="{MINT}" stroke-opacity=".5" '
+            'stroke-dasharray="3 4"/>'
+        )
+    parts.append(
+        f'<path d="M486 198V280M480 274L486 280L492 274" fill="none" stroke="{MINT}" '
+        'stroke-opacity=".6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>'
+        f'<rect x="296" y="288" width="234" height="46" rx="14" fill="{ACCENT}" '
+        f'fill-opacity=".22" stroke="{MINT}" stroke-opacity=".55"/>'
+        f'<circle cx="314" cy="311" r="5" fill="{MINT}"/>'
+        '<rect x="328" y="302" width="150" height="7" rx="3.5" fill="#fff" fill-opacity=".55"/>'
+        '<rect x="328" y="315" width="104" height="7" rx="3.5" fill="#fff" fill-opacity=".3"/>'
+    )
+    return "".join(parts)
 
 
 def _seshat_art(canvas: Canvas) -> str:
@@ -1211,70 +1257,123 @@ def _seshat_art(canvas: Canvas) -> str:
     return "".join(parts)
 
 
-def _argus_art(canvas: Canvas) -> str:
-    left, top, size = 172, 30, 272
+def _record_icon(kind: str, cx: float, cy: float) -> str:
+    """Small line icons for the records Fulyn keeps."""
+    line = 'fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"'
+    if kind == "expense":
+        return (
+            f'<circle cx="{cx}" cy="{cy}" r="10" fill="{PEACH}" fill-opacity=".16" '
+            f'stroke="{PEACH}" stroke-width="1.6"/>'
+            f'<circle cx="{cx}" cy="{cy}" r="4.5" fill="none" stroke="{PEACH}" '
+            'stroke-opacity=".75" stroke-width="1.4"/>'
+        )
+    if kind == "sleep":
+        return (
+            f'<path d="M{cx + 3} {cy - 9.5}A10 10 0 1 0 {cx + 9.5} {cy + 3}'
+            f'A7.5 7.5 0 0 1 {cx + 3} {cy - 9.5}Z" fill="{BLUE}"/>'
+        )
+    if kind == "mood":
+        return (
+            f'<circle cx="{cx}" cy="{cy}" r="10" stroke="{MINT}" {line}/>'
+            f'<circle cx="{cx - 3.5}" cy="{cy - 2.5}" r="1.4" fill="{MINT}"/>'
+            f'<circle cx="{cx + 3.5}" cy="{cy - 2.5}" r="1.4" fill="{MINT}"/>'
+            f'<path d="M{cx - 4.5} {cy + 2.5}Q{cx} {cy + 7} {cx + 4.5} {cy + 2.5}" '
+            f'stroke="{MINT}" {line}/>'
+        )
+    if kind == "people":
+        return (
+            f'<circle cx="{cx - 4}" cy="{cy - 4}" r="3.6" fill="{TEAL}"/>'
+            f'<circle cx="{cx + 5}" cy="{cy - 3}" r="3.2" fill="{TEAL}" fill-opacity=".7"/>'
+            f'<path d="M{cx - 11} {cy + 9}A7 6.5 0 0 1 {cx + 3} {cy + 9}Z" fill="{TEAL}"/>'
+            f'<path d="M{cx + 1} {cy + 9}A5.5 5.5 0 0 1 {cx + 11} {cy + 9}Z" fill="{TEAL}" '
+            'fill-opacity=".7"/>'
+        )
+    return (  # journal
+        f'<rect x="{cx - 7}" y="{cy - 10}" width="14" height="20" rx="2.5" stroke="#fff" '
+        f'stroke-opacity=".6" {line}/>'
+        f'<path d="M{cx - 3.5} {cy - 4}H{cx + 3.5}M{cx - 3.5} {cy}H{cx + 3.5}'
+        f'M{cx - 3.5} {cy + 4}H{cx + 1}" stroke="#fff" stroke-opacity=".45" {line}/>'
+    )
 
-    def point(stated: float, observed: float) -> str:
-        return f"{left + stated * size:.1f},{top + (1 - observed) * size:.1f}"
 
-    parts = [
-        _preview_frame(canvas),
-        f'<rect x="{left}" y="{top}" width="{size}" height="{size}" fill="none" '
-        'stroke="#fff" stroke-opacity=".16"/>',
-    ]
-    for step in (0.25, 0.5, 0.75):
-        offset = step * size
-        parts.append(
-            f'<path d="M{left + offset:.1f} {top}V{top + size}'
-            f'M{left} {top + offset:.1f}H{left + size}" '
-            'stroke="#fff" stroke-opacity=".06"/>'
-        )
-    parts.append(
-        f'<path d="M{left} {top + size}L{left + size} {top}" stroke="#fff" '
-        'stroke-opacity=".35" stroke-dasharray="3 5"/>'
+def _fulyn_art(canvas: Canvas) -> str:
+    """A note typed into chat, split into the records Fulyn keeps."""
+    records = (
+        ("expense", PEACH, 64),
+        ("sleep", BLUE, 48),
+        ("mood", MINT, 40),
+        ("people", TEAL, 56),
+        ("journal", "#ffffff", 72),
     )
-    for series, colour in ((OVERTRUSTED, PEACH), (HONEST, MINT)):
-        points = " ".join(point(*pair) for pair in series)
-        parts.append(
-            f'<polyline points="{points}" fill="none" stroke="{colour}" stroke-opacity=".25" '
-            'stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>'
-            f'<polyline points="{points}" fill="none" stroke="{colour}" stroke-width="2.4" '
-            'stroke-linejoin="round" stroke-linecap="round"/>'
-        )
-        parts.extend(
-            f'<circle cx="{p.split(",")[0]}" cy="{p.split(",")[1]}" r="3.2" fill="{colour}"/>'
-            for p in points.split()
-        )
-    for row, (text, colour) in enumerate((("honest", MINT), ("overtrusted", PEACH))):
-        y = top + 28 + row * 22
-        parts.append(
-            f'<path d="M{left + 16} {y - 4.5}h18" stroke="{colour}" stroke-width="2.4" '
-            'stroke-linecap="round"/>'
-        )
-        parts.append(canvas.text("mono", text, 13, x=left + 42, y=y, fill=BODY).markup)
-    parts.append(
-        canvas.text(
-            "mono",
-            "stated confidence",
-            12.5,
-            x=left + size,
-            y=top + size + 22,
-            fill=LABEL,
-            anchor="end",
-        ).markup
+    chat_panel = (
+        '<rect x="30" y="30" width="214" height="304" rx="16" fill="#fff" fill-opacity=".03" '
+        'stroke="#fff" stroke-opacity=".1"/>'
     )
-    parts.append(
-        f'<g transform="translate({left - 12} {top + size}) rotate(-90)">'
-        + canvas.text("mono", "observed frequency", 12.5, x=0, y=0, fill=LABEL).markup
-        + "</g>"
+    sent_note = (
+        f'<rect x="64" y="50" width="166" height="74" rx="14" fill="{ACCENT}" '
+        f'fill-opacity=".32" stroke="{MINT}" stroke-opacity=".45"/>'
     )
+    parts = [_preview_frame(canvas), chat_panel, sent_note]
+    for y, w, opacity in ((66, 128, 0.6), (82, 112, 0.45), (98, 82, 0.45)):
+        parts.append(
+            f'<rect x="80" y="{y}" width="{w}" height="7" rx="3.5" fill="#fff" '
+            f'fill-opacity="{opacity}"/>'
+        )
+    # The reply: one dot per record it logged.
+    parts.append(
+        '<rect x="44" y="140" width="150" height="58" rx="14" fill="#fff" fill-opacity=".07"/>'
+        '<rect x="58" y="154" width="108" height="7" rx="3.5" fill="#fff" fill-opacity=".3"/>'
+    )
+    for index, (_, colour, _) in enumerate(records):
+        parts.append(f'<circle cx="{63 + index * 16}" cy="182" r="4.5" fill="{colour}"/>')
+    parts.append(
+        f'<rect x="112" y="214" width="118" height="40" rx="14" fill="{ACCENT}" '
+        'fill-opacity=".2"/>'
+        '<rect x="126" y="225" width="84" height="7" rx="3.5" fill="#fff" fill-opacity=".45"/>'
+        '<rect x="126" y="238" width="60" height="7" rx="3.5" fill="#fff" fill-opacity=".3"/>'
+        '<rect x="44" y="290" width="186" height="30" rx="15" fill="#fff" fill-opacity=".05" '
+        'stroke="#fff" stroke-opacity=".12"/>'
+        f'<rect class="blink" x="60" y="298" width="2" height="14" rx="1" fill="{MINT}"/>'
+        '<rect x="70" y="302" width="70" height="6" rx="3" fill="#fff" fill-opacity=".14"/>'
+    )
+
+    for index, (label, colour, bar) in enumerate(records):
+        top = 34 + index * 58
+        cy = top + 24
+        highlighted = index == 0
+        parts.append(
+            f'<path d="M230 87C266 87 266 {cy} 300 {cy}" fill="none" stroke="{MINT}" '
+            f'stroke-opacity="{0.8 if highlighted else 0.3}" stroke-width="1.4" '
+            'stroke-dasharray="3 4"/>'
+        )
+        card = (
+            f'fill="#fff" fill-opacity=".08" stroke="{MINT}" stroke-opacity=".6"'
+            if highlighted
+            else 'fill="#fff" fill-opacity=".045" stroke="#fff" stroke-opacity=".1"'
+        )
+        parts.append(f'<rect x="300" y="{top}" width="230" height="48" rx="12" {card}/>')
+        parts.append(_record_icon(label, 324, cy))
+        parts.append(
+            canvas.text(
+                "mono", label, 13, x=346, y=cy - 2, fill=TEXT if highlighted else BODY
+            ).markup
+        )
+        parts.append(
+            f'<rect x="346" y="{cy + 6}" width="{bar}" height="6" rx="3" fill="#fff" '
+            'fill-opacity=".14"/>'
+            f'<rect x="462" y="{cy - 10}" width="54" height="20" rx="10" fill="{colour}" '
+            f'fill-opacity=".14" stroke="{colour}" stroke-opacity=".45"/>'
+            f'<rect x="472" y="{cy - 3}" width="34" height="6" rx="3" fill="{colour}" '
+            'fill-opacity=".8"/>'
+        )
+    parts.append(status_dot(300, 58, 4, MINT, pulse=True))
     return "".join(parts)
 
 
 ART: dict[str, Callable[[Canvas], str]] = {
-    "owl": _owl_art,
+    "datasense": _datasense_art,
     "seshat": _seshat_art,
-    "argus": _argus_art,
+    "fulyn": _fulyn_art,
 }
 
 
@@ -1289,7 +1388,7 @@ def _tags(canvas: Canvas, tags: tuple[str, ...], x: float, cy: float, size: floa
 
 def project_card(project: Project, *, compact: bool) -> str:
     canvas = Canvas()
-    glow = {"owl": GLOW_BLUE, "seshat": GLOW_GREEN, "argus": GLOW_TEAL}[project.slug]
+    glow = {"datasense": GLOW_BLUE, "seshat": GLOW_GREEN, "fulyn": GLOW_TEAL}[project.slug]
     if compact:
         width = 640
         art_x, art_y, art_scale = 20, 20, 600 / 560
@@ -1338,7 +1437,7 @@ def project_card(project: Project, *, compact: bool) -> str:
         )
     parts.append(_tags(canvas, project.tags, text_x, tags_y, tag_size))
     link = canvas.text(
-        "mono-medium", "REPOSITORY", link_size, x=text_x, y=link_y, fill=MINT, tracking=0.16
+        "mono-medium", project.link, link_size, x=text_x, y=link_y, fill=MINT, tracking=0.16
     )
     parts.append(
         link.markup
@@ -1346,7 +1445,7 @@ def project_card(project: Project, *, compact: bool) -> str:
             text_x + link.width + link_size * 1.4, link_y - link_size * 0.36, link_size * 0.86, MINT
         )
     )
-    title = f"{project.name}: {project.blurb} {', '.join(project.tags).title()}. Repository."
+    title = f"{project.name}: {project.blurb} {', '.join(project.tags).title()}. {project.link.capitalize()}."
     return canvas.document(width, height, title, "".join(parts))
 
 
@@ -1543,9 +1642,8 @@ def main() -> None:
     outputs = {
         "hero.svg": hero(compact=False),
         "hero-compact.svg": hero(compact=True),
-        "quote.svg": quote(),
-        "stack.svg": bento(compact=False),
-        "stack-compact.svg": bento(compact=True),
+        "skills.svg": skills(compact=False),
+        "skills-compact.svg": skills(compact=True),
         "stats.svg": stats(compact=False),
         "stats-compact.svg": stats(compact=True),
         "contact.svg": contact(compact=False),
